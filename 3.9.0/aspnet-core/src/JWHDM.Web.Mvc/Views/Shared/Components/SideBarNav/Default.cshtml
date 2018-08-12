@@ -1,0 +1,193 @@
+﻿@using Abp.Collections.Extensions
+@using JWHDM.Web.Views
+@using JWHDM.Web.Views.Shared.Components.SideBarNav
+@using Abp.Application.Navigation;
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor  HttpContextAccessorIns
+@model SideBarNavViewModel
+@{
+    var calculateMenuUrl = new Func<string, string>((url) =>
+    {
+        if (string.IsNullOrEmpty(url))
+        {
+            return ApplicationPath;
+        }
+
+        if (UrlChecker.IsRooted(url))
+        {
+            return url;
+        }
+
+        return ApplicationPath + url;
+    });
+
+    Func<string, UserMenuItem, Boolean> Recursion = null;
+    Recursion = new Func<string, UserMenuItem, Boolean>((activeMenuName, item) =>
+    {
+        if (item.Name.Equals(activeMenuName))
+            return true;
+
+        if (item.Items != null && item.Items.Count != 0)
+        {
+            foreach (var subItem in item.Items)
+            {
+                if (Recursion(activeMenuName, subItem))
+                    return true;
+            }
+        }
+
+        return false;
+    });
+    //var isOpenStatusMenuContainThisMenu = Recursion("AspNetZero", Model.MainMenu.Items[5]);
+
+    Func<string, IList<UserMenuItem>, IList<UserMenuItem>> Route = null;
+    var routeContainer = new List<UserMenuItem>();
+    Route = new Func<string, IList<UserMenuItem>, IList<UserMenuItem>>((activeMenuName, userMenuItems) =>
+    {
+        foreach (var item in userMenuItems)
+        {
+            routeContainer.Add(item);
+            if (item.Name == activeMenuName)
+            {
+                return routeContainer;
+            }
+
+            if (item.Items == null || item.Items.Count == 0)
+            {
+                routeContainer.Clear();
+                continue;
+            }
+            else
+            {
+                var subRoute = Route(activeMenuName, item.Items);
+                if (subRoute.Where(x => x.Name == activeMenuName).SingleOrDefault() != null)
+                    return subRoute;
+            }
+        }
+
+        return routeContainer;
+    });
+
+    //var kj= Route("Tasks", Model.MainMenu.Items);
+
+    //var activeMenuItemName = HttpContextAccessorIns.HttpContext.Request.Cookies["activeMenuItemName"] ?? "";
+    //if (string.IsNullOrEmpty(activeMenuItemName))
+    //{
+    //    HttpContextAccessorIns.HttpContext.Response.Cookies.Delete("activeMenuItemName");
+    //}
+    //HttpContextAccessorIns.HttpContext.Response.Cookies.Append("activeMenuItemName", Model.ActiveMenuItemName);
+    var cookieMenuidsOpen = HttpContextAccessorIns.HttpContext.Request.Cookies["menuids_open"] ?? "";
+}
+
+@foreach (var menuItem in Model.MainMenu.Items)
+{
+    @if (menuItem.Items.IsNullOrEmpty())
+    {
+        <li menuid="@menuItem.Name" menuname="@menuItem.DisplayName" class="@(Model.ActiveMenuItemName == menuItem.Name ? "active" : "")">
+            <a href="@calculateMenuUrl(menuItem.Url)">
+                @if (!string.IsNullOrWhiteSpace(menuItem.Icon))
+                {
+                    @*<i class="@menuItem.Icon"></i>*@
+                    <i class="fa fa-circle-o"></i>
+                }
+                else
+                {
+                    <i class="fa fa-circle-o"></i>
+                }
+                <span>@menuItem.DisplayName</span>
+            </a>
+        </li>
+    }
+    else
+    {
+        @*<li menuid="@menuItem.Name" menuname="@menuItem.DisplayName" class="treeview @(Recursion(Model.ActiveMenuItemName,menuItem)? "menu-open" : "") @(Model.ActiveMenuItemName == menuItem.Name ? "active" : "")">*@
+        <li menuid="@menuItem.Name" menuname="@menuItem.DisplayName" class="treeview @(cookieMenuidsOpen.Contains(menuItem.Name)?"menu-open": "")">
+            <a href="#">
+                <i class="fa fa-pie-chart"></i>
+                <span>@menuItem.DisplayName</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            @*<ul class="treeview-menu" style="display:@(Recursion(Model.ActiveMenuItemName,menuItem)?"block;":"none;")">*@
+            <ul class="treeview-menu" style="display:@(cookieMenuidsOpen.Contains(menuItem.Name)?"block;":"none;")">
+                @await Component.InvokeAsync(typeof(SideBarNavViewComponent), new { allUserMenu = Model, UserMenuItem = menuItem, activeMenu = ViewBag.CurrentPageName })
+            </ul>
+        </li>
+    }
+}
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            $("ul li.treeview a").click(function () {
+                //var menuid = $(this).parent().attr("menuid");
+                //alert(menuid);
+                var parentIsOpen = $(this).parent().hasClass("menu-open");
+                if (parentIsOpen)//此时事件为合上
+                {
+                    var ulChidren = $(this).parent().find("ul");
+                    ulChidren.each(function () {
+                        $(this).css('display', 'none');
+                        //if ($(this).parent().hasClass("menu-open"))
+                        //{
+                        //    $(this).parent().removeClass("menu-open");
+                        //}
+                    });
+                }
+
+                //var activemenuids = [];
+                //$('.active').each(function () {
+                //    activemenuids.push($(this).attr('menuid'));
+                //});
+                //alert(activemenuids.join(','));
+                //var href = $(this).attr('href');
+                //if (href === null || href === "#")
+                //    return;
+
+                //var menuids = [];
+                //$('.menu-open').each(function () {
+                //    menuids.push($(this).attr('menuid'));
+                //});
+
+                ////$.cookie('menuids_open', null);
+                ////$.cookie('menuids_open', menuids.join(','), { path: "/" });
+                ////var jkkj = $.cookie('menuids_open');
+                ////alert(jkkj);
+                //alert(menuids.join(','));
+            });
+
+            $("ul li a").click(function () {
+                //$(this).parent.attr("class", "active");
+                //var activemenuids = [];
+                //$('.active').each(function () {
+                //    activemenuids.push($(this).attr('menuid'));
+                //});
+                //activemenuids.push($(this).parent('li').attr('menuid'));
+                //alert(activemenuids.join(','));
+                //var href = $(this).attr('href');
+                //if (href === null || href === "#")
+                //    return;
+
+                var menuids = [];
+                var menunames = [];
+                //$('.menu-open').each(function () {
+                //    menuids.push($(this).attr('menuid'));
+                //});
+                var parentLiS = $(this).parents("li");
+                parentLiS.each(function () {
+                    menuids.push($(this).attr('menuid'));
+                    menunames.push($(this).attr('menuname'));
+                });
+                menunames.reverse();
+                $.cookie('menuids_open', null);
+                $.cookie('menuids_open', menuids.join(','), { path: "/" });
+                $.cookie('menunames_open', null);
+                $.cookie('menunames_open', menunames.join(','), { path: "/" });
+                //var jkkj = $.cookie('menuids_open');
+                //alert(jkkj);
+                //alert(menuids.join(','));
+            });
+        });
+</script>
+
+

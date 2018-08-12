@@ -1,0 +1,109 @@
+﻿@using System.Globalization
+@using Abp.Configuration
+@using Abp.Configuration.Startup
+@using Abp.Web.Mvc.Alerts
+@using Abp.Web.Security.AntiForgery
+@using JWHDM
+@using JWHDM.Configuration
+@using JWHDM.Web.Resources
+@using JWHDM.Web.Views.Shared.Components.SideBarNav
+@using JWHDM.Web.Views.Shared.Components.SideBarUserArea
+@using JWHDM.Web.Views.Shared.Components.TopBarLanguageSwitch
+@using JWHDM.Web.Views.Shared.Components.RightSideBar
+@using JWHDM.Web.Views.Shared.Components.MainHeader
+@using JWHDM.Web.Views.Shared.Components.Breadcrumb
+@inject IAbpAntiForgeryManager AbpAntiForgeryManager
+@inject IMultiTenancyConfig MultiTenancyConfig
+@inject IWebResourceManager WebResourceManager
+@inject ISettingManager SettingManager
+@inject IAlertManager AlertManager
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor  HttpContextAccessorIns
+@{
+    Layout = null;
+    AbpAntiForgeryManager.SetCookie(Context);
+    var uiTheme = await SettingManager.GetSettingValueAsync(AppSettingNames.UiTheme);
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="~/favicon.ico">
+    <title>JWHDM</title>
+    @await Html.PartialAsync("_SiteCssPartial")
+    @RenderSection("styles", required: false)
+    @await Html.PartialAsync("_SiteScriptsPartial")
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        @await Component.InvokeAsync(typeof(MainHeaderViewComponent), new { activeMenu = ViewBag.CurrentPageName })
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="~/adminlte/AdminLTE-2.4.3/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>Alexander Pierce</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="header">MAIN NAVIGATION</li>
+                    @await Component.InvokeAsync(typeof(SideBarNavViewComponent), new { activeMenu = ViewBag.CurrentPageName })
+                </ul>
+                <!-- /.sidebar -->
+            </section>
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                @await Component.InvokeAsync(typeof(BreadcrumbViewComponent), new { activeMenu = ViewBag.CurrentPageName })
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                @RenderBody()
+            </section>
+        </div>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+            <div class="p-3">
+                <h5>Title</h5>
+                <p>Sidebar content</p>
+            </div>
+        </aside>
+
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 2.4.0
+            </div>
+            <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+            reserved.
+        </footer>
+    </div>
+
+    <script>
+    // Localizing momentjs
+    @*moment.locale('@CultureInfo.CurrentUICulture.Name');*@
+    </script>
+    @WebResourceManager.RenderScripts()
+    <!-- View specific scripts -->
+    @RenderSection("scripts", required: false)
+    @RenderSection("pagescripts", required: false)
+</body>
+    
+</html>
