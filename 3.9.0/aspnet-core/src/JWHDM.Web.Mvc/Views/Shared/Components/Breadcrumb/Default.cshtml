@@ -1,0 +1,39 @@
+@using JWHDM.Configuration.Ui
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor  HttpContextAccessorIns
+@model JWHDM.Web.Views.Shared.Components.Breadcrumb.BreadcrumbViewModel
+    <h1>
+        @*Data Tables*@
+        <small>@*advanced tables*@</small>
+    </h1>
+    <ol class="breadcrumb">
+        @{
+            var cookieMenunamesOpen = HttpContextAccessorIns.HttpContext.Request.Cookies["menunames_open"] ?? "";
+            //Console.WriteLine("cookieMenuidsOpen: " + cookieMenuidsOpen);
+            if (!string.IsNullOrEmpty(cookieMenunamesOpen))
+            {
+                var stringMenuItemNameArray = cookieMenunamesOpen.Split(',');
+                if (stringMenuItemNameArray.Any())
+                {
+                    <li><a href="#"><i class="fa fa-dashboard"></i>@stringMenuItemNameArray[0]</a></li>
+                    if (stringMenuItemNameArray.Length > 1)
+                    {
+                        for (var i = 1; i < stringMenuItemNameArray.Length; i++)
+                        {
+                            <li><a href="#">@stringMenuItemNameArray[i]</a></li>
+                        }
+                        @*<li><a href="#">@activeMenuItemName</a></li>*@
+                    }
+                }
+
+            }
+            else
+            {
+                @*<li><a href="#"><i class="fa fa-dashboard"></i>@activeMenuItemName</a></li>*@
+            }
+        }
+        @*<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard788</li>
+        <li class="active">Dashboard789</li>
+        <li class="active">Dashboard790</li>*@
+    </ol>

@@ -1,0 +1,100 @@
+﻿@using JWHDM.Web.Models.Common.Modals
+@model JWHDM.Web.Models.Roles.EditRoleModalViewModel
+@{
+    Layout = null;
+}
+@*@Html.Partial("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("EditRole")))*@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    <h4 class="modal-title" id="EditRoleModalLabel"></h4>
+</div>
+<div class="modal-body">
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#tabuser" aria-controls="home" role="tab" data-toggle="tab">角色</a></li>
+        <li><a href="#tabrole" data-toggle="tab">权限</a></li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane in active" id="tabuser">
+            <form class="form-horizontal" role="form" id="user-form" style="padding: 10px" method="post">
+                <div class="form-group">
+                    <label for="rolename" class="form-label">@L("RoleName")</label>
+                    <input type="text" name="id" value="@Model.Role.Id" class="form-control" id="id" placeholder="id" style="display:none">
+                    <input type="hidden" id="isStatic" name="IsStatic" value="@(Model.Role.IsStatic.ToString())" />
+                    <input id="rolename" @(Model.Role.IsStatic ? "disabled" : "") type="text" name="Name" value="@Model.Role.Name" required maxlength="32" minlength="2" class="validate form-control">
+                </div>
+                <div class="form-group">
+                    <label for="displayname" class="form-label">@L("DisplayName")</label>
+                    <input id="displayname" type="text" name="DisplayName" value="@Model.Role.DisplayName" required maxlength="32" minlength="2" class="validate form-control">
+                </div>
+                <div class="form-group">
+                    <label for="role-description" class="form-label">@L("RoleDescription")</label>
+                    <textarea id="role-description" name="Description" class="validate form-control">@Model.Role.Description</textarea>
+                </div>
+            </form>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tabrole">
+            <div class="row">
+                <div class="col-sm-12 " id="roleGroup">
+                    <h4>@L("Permissions")</h4>
+                    @foreach (var permission in Model.Permissions)
+                    {
+                        <div class="col-sm-6">
+                            <input type="checkbox" name="permission" value="@permission.Name" class="filled-in" id="@string.Format("permission{0}",permission.Name)" @(Model.HasPermission(permission) ? "checked" : "") @(Model.Role.IsStatic ? "disabled" : "") />
+                            <label for="@string.Format("permission{0}",permission.Name)">@permission.DisplayName</label>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    @*</form>*@
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+    <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
+</div>
+@*@Html.Partial("~/Views/Shared/Modals/_ModalFooterWithSaveAndCancel.cshtml")*@
+@*<script src="~/view-resources/Views/Roles/_EditRoleModal.js" asp-append-version="true"></script>*@
+<script type="text/javascript">
+    //新增提交
+    (function () {
+        $(function () {
+                $("#btn_submit").click(function () {
+                    var title = $("#EditRoleModalLabel").text();
+                    var actionUrl = "Roles/Update";
+                    var id = $("#id").val() == "" ? 0 : $("#id").val();
+                    var param = {
+                        "id": id,
+                        "name": $("#rolename").val(),
+                        "displayname": $("#displayname").val(),
+                        "description": $("#role-description").val(),
+                        "normalizedName":"",
+                        "isStatic": $("#isStatic").val(),
+                        permissions: []
+                    };
+
+                    var permissionsData = [];
+                    $("#roleGroup").find(":checkbox:checked").each(function () {
+                        permissionsData.push($(this).val());
+                    });
+                    param.permissions = permissionsData;
+                    //if (permissionsData.length > 0) {
+                    //    param.permissions = [permissionsData.join(',')];
+                    //}
+                    //data: JSON.stringify(param)
+                    abp.ajax({
+                        url: actionUrl,
+                        ContentType:"application/json",
+                        data: JSON.stringify(param)
+                    }).done(function (data) {
+                        var actionUrl = "Roles/GetRoles";
+                        $("#tb_departments").bootstrapTable('refresh', { url: actionUrl });
+                        abp.notify.success('updated new person with id = ' + data.id);
+                    }).fail(function (data) {
+                        abp.notify.error('Something is wrong!');
+                        //abp.notify.error(data.message);
+                    });
+                });
+        });
+    })();
+</script>
