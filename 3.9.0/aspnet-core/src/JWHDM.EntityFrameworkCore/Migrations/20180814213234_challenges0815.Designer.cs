@@ -3,14 +3,16 @@ using System;
 using JWHDM.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JWHDM.Migrations
 {
     [DbContext(typeof(JWHDMDbContext))]
-    partial class JWHDMDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180814213234_challenges0815")]
+    partial class challenges0815
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1004,8 +1006,6 @@ namespace JWHDM.Migrations
                     b.Property<string>("Description");
 
                     b.Property<bool>("IsDeleted");
-
-                    b.Property<bool>("IsPublic");
 
                     b.Property<DateTime?>("LastModificationTime");
 

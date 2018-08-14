@@ -14,5 +14,10 @@ namespace JWHDM.EntityFrameworkCore
             : base(options)
         {
         }
+
+        public virtual DbSet<TenantAgency.TenantAgency> TenantAgencys { get; set; }
+        public virtual DbSet<UserMember.UserMember> UserMembers { get; set; }
+        public virtual DbSet<UserEmployee.UserEmployee> UserEmployees { get; set; }
+        public virtual DbSet<Challenge.Challenge> Challenges { get; set; }
     }
 }

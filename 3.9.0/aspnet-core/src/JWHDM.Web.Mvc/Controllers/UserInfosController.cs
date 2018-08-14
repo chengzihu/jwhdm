@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JWHDM.Web.Mvc.Controllers
 {
-    [AbpMvcAuthorize(PermissionNames.Pages_Users)]
+    [AbpMvcAuthorize(PermissionNames.Pages_UserInfos)]
     public class UserInfosController:JWHDMControllerBase
     {
         private readonly IUserAppService _userAppService;
