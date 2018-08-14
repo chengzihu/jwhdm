@@ -11,6 +11,7 @@ using JWHDM.Roles.Dto;
 using Abp.AutoMapper;
 using JWHDM.Users.Dto;
 using System.Linq;
+using Abp.Authorization;
 
 namespace JWHDM.Web.Controllers
 {
@@ -28,6 +29,14 @@ namespace JWHDM.Web.Controllers
         {
             var roles = (await _roleAppService.GetAll(new PagedAndSortedResultRequestDto())).Items;
             var permissions = (await _roleAppService.GetAllPermissions()).Items;
+
+            foreach (var role in roles)
+            {
+                var grantedPermissions = (await _roleAppService.GetGrantedPermissionsAsync(role.Id));
+                role.Permissions.Clear();
+                role.Permissions.AddRange(grantedPermissions);
+            }
+
             var model = new RoleListViewModel
             {
                 Roles = roles,
@@ -40,10 +49,18 @@ namespace JWHDM.Web.Controllers
         [DontWrapResult] //²»ÐèÒªAbpJsonResult]
         public async Task<JsonResult> GetRoles(RoleQueryDto input)
         {
-            var roles = (await _roleAppService.GetAll(new PagedAndSortedResultRequestDto())).Items;
+            var roles = (await _roleAppService.GetAll(new PagedAndSortedResultRequestDto() {  SkipCount= input.offset * input.limit, MaxResultCount= input.limit})).Items;
             var rolelist = roles;
             if (!string.IsNullOrEmpty(input.departmentname))
-                rolelist = roles.Where(x => x.Name.Contains(input.departmentname)|| x.DisplayName.Contains(input.departmentname)).Skip(input.offset * input.limit).Take(input.limit).ToList();
+                rolelist = roles.Where(x => x.Name.Contains(input.departmentname) || x.DisplayName.Contains(input.departmentname)).ToList();//.Skip(input.offset * input.limit).Take(input.limit).ToList();
+
+            foreach (var role in rolelist)
+            {
+                var grantedPermissions = (await _roleAppService.GetGrantedPermissionsAsync(role.Id));
+                role.Permissions.Clear();
+                role.Permissions.AddRange(grantedPermissions);
+            }
+
             var result = new { total = rolelist.Count, rows = rolelist };
             return Json(result);
         }
@@ -82,6 +99,10 @@ namespace JWHDM.Web.Controllers
         public async Task<ActionResult> EditRoleModal(int roleId)
         {
             var role = await _roleAppService.Get(new EntityDto(roleId));
+            var grantedPermissions = (await _roleAppService.GetGrantedPermissionsAsync(role.Id));
+            role.Permissions.Clear();
+            role.Permissions.AddRange(grantedPermissions);
+
             var permissions = (await _roleAppService.GetAllPermissions()).Items;
             var model = new EditRoleModalViewModel
             {

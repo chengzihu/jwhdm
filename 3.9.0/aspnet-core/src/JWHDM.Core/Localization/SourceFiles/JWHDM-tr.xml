@@ -83,5 +83,7 @@
 	<text name="Create">Oluştur</text>
 	<text name="UserDetails">Kullanıcı detayları</text>
 	<text name="UserRoles">Kullanıcı rolleri</text>		
+  <text name="Task List" value="Task List" />
+  <text name="UserInfos" value="UserInfos" />
   </texts>
 </localizationDictionary>

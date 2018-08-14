@@ -83,10 +83,40 @@ namespace JWHDM.Roles
             CheckErrors(await _roleManager.DeleteAsync(role));
         }
 
+        /// <summary>
+        /// add by kevin at 18.08.14
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
+        public async Task<List<string>> GetGrantedPermissionsAsync(int roleId)
+        {
+            List<string> grantedList = new List<string>();
+            var grantedPermissions = await _roleManager.GetGrantedPermissionsAsync(roleId);
+            foreach (var item in grantedPermissions)
+            {
+                grantedList.Add(item.Name);
+            }
+
+            return grantedList;
+        }
+
+        /// <summary>
+        /// add by kevin at 18.08.14
+        /// </summary>
+        /// <returns></returns>
+        public List<Permission> GetRolePermissionsForManage()
+        {
+            var grantedPermissions = PermissionManager
+                .GetAllPermissions()
+                .Where(s => s.Name.Contains("Pages."))
+                .ToList();
+
+            return grantedPermissions;
+        }
+
         public Task<ListResultDto<PermissionDto>> GetAllPermissions()
         {
             var permissions = PermissionManager.GetAllPermissions();
-
             return Task.FromResult(new ListResultDto<PermissionDto>(
                 ObjectMapper.Map<List<PermissionDto>>(permissions)
             ));

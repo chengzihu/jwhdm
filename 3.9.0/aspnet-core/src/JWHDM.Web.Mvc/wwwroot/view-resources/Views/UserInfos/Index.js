@@ -17,7 +17,7 @@
             oTableInit.Init = function () {
                 $('#tb_departments').bootstrapTable({
                     // url: '../User/GetUsersList',
-                    url: 'Users/GetUsers',         //请求后台的URL（*）
+                    url: 'GetUsers',         //请求后台的URL（*）
                     method: 'get',                      //请求方式（*）
                     toolbar: '#toolbar',                //工具按钮用哪个容器
                     classes: 'table',//边框
@@ -213,14 +213,14 @@
                 //查询角色
                 $("#btn_query").click(function () {
                     m_pagerow = 0;
-                    $("#tb_departments").bootstrapTable('refresh', { url: "Users/GetUsers" });
+                    $("#tb_departments").bootstrapTable('refresh', { url: "UserInfos/GetUsers" });
                 });
                 //新增按钮单击
                 $("#btn_add").click(function () {
                     var param = {};
                     $.ajax({
                         type: "GET",
-                        url: "Users/GetRoles",
+                        url: "GetRoles",
                         data: param,
                         beforeSend: function () {
                         },
@@ -240,9 +240,9 @@
                 //新增提交
                 $("#btn_submit").click(function () {
                     var title = $("#myModalLabel").text();
-                    var actionUrl = "Users/Update";
-                    if ("新增用户"==title) {
-                        actionUrl = "Users/Create";
+                    var actionUrl = "Update";
+                    if ("新增用户" == title) {
+                        actionUrl = "Create";
                     }
 
                     var roleNamesData = [];
@@ -271,7 +271,7 @@
                         url: actionUrl,
                         data: JSON.stringify(newPerson)
                     }).done(function (data) {
-                        var actionUrl = "Users/GetUsers";
+                        var actionUrl = "GetUsers";
                         $("#tb_departments").bootstrapTable('refresh', { url: actionUrl });
                         abp.notify.success('updated new person with id = ' + data.id);
                     }).fail(function (data) {
@@ -292,7 +292,7 @@
                         return;
                     }
 
-                    var actionUrl = "Users/GetRoles";
+                    var actionUrl = "GetRoles";
                     var param = { id: arrselections[0].id };
                     var arrselections = $("#tb_departments").bootstrapTable('getSelections');
                     $.ajax({
@@ -317,7 +317,7 @@
 
                 //删除角色
                 $("#btn_delete").click(function () {
-                    var actionUrl = "Users/Delete";
+                    var actionUrl = "Delete";
                     var arrselections = $("#tb_departments").bootstrapTable('getSelections');
                     if (arrselections.length > 1) {
                         toastr.warning('只能选择一行进行编辑');
@@ -336,7 +336,7 @@
                         url: actionUrl,
                         data: JSON.stringify(newPerson)
                     }).done(function (data) {
-                        var actionUrl = "Users/GetUsers";
+                        var actionUrl = "GetUsers";
                         $("#tb_departments").bootstrapTable('refresh', { url: actionUrl });
                         abp.notify.success('updated new person with id = ' + data.id);
                     }).fail(function (data) {

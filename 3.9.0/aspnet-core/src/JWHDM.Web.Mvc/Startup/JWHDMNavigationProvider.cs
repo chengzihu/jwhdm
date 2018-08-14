@@ -30,9 +30,9 @@ namespace JWHDM.Web.Startup
                     )
                 ).AddItem(
                             new MenuItemDefinition(
-                                "Tasks",
-                                L("Task List"),
-                                url: "Tasks/Index",
+                                "UserInfos",
+                                L("UserInfos"),
+                                url: "UserInfos/Index",
                                 icon: "fa fa-tasks",
                                 requiresAuthentication: true
                             )

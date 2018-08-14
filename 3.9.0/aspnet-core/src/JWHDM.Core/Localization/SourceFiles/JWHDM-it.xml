@@ -53,5 +53,7 @@
     <text name="Yes" value="Sì" />
     <text name="No" value="No" />
     <text name="Optional" value="Opzionale" />
+    <text name="Task List" value="Task List" />
+    <text name="UserInfos" value="UserInfos" />
   </texts>
 </localizationDictionary>
