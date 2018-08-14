@@ -10,5 +10,6 @@
         public const string Tasks = "Tasks";
         public const string Tasks1 = "Tasks1";
         public const string Tasks2 = "Tasks2";
+        public const string UserInfos = "UserInfos";
     }
 }

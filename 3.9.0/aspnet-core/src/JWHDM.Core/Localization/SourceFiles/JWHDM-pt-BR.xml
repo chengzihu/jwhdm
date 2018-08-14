@@ -91,5 +91,7 @@
     <text name="StartTyping">Comece a escrever</text>
     <text name="Skins">Temas</text>
     <text name="Settings">Configurações</text>
+    <text name="Task List" value="Task List" />
+    <text name="UserInfos" value="UserInfos" />
   </texts>
 </localizationDictionary>
