@@ -3,12 +3,17 @@ using Abp.Domain.Entities.Auditing;
 using JWHDM.Authorization.Users;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace JWHDM.UserMember
 {
     public class UserMember : Entity, IHasCreationTime, IHasDeletionTime, IHasModificationTime, ICreationAudited
     {
+        [Required]
+        [MaxLength(20)]
+        public string Number { get; set; }
+        public string Phote { get; set; }
         public string Name { get; set; }
         public string IDCard { get; set; }
         public User RelationUser { get; set; }

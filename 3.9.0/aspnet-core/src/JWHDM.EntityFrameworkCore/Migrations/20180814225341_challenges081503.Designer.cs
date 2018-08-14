@@ -3,14 +3,16 @@ using System;
 using JWHDM.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JWHDM.Migrations
 {
     [DbContext(typeof(JWHDMDbContext))]
-    partial class JWHDMDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180814225341_challenges081503")]
+    partial class challenges081503
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1164,8 +1166,6 @@ namespace JWHDM.Migrations
 
                     b.Property<string>("PhoneNumber");
 
-                    b.Property<string>("Phote");
-
                     b.Property<long?>("RelationUserId");
 
                     b.Property<int?>("Type");
@@ -1233,8 +1233,6 @@ namespace JWHDM.Migrations
                         .HasMaxLength(20);
 
                     b.Property<string>("PhoneNumber");
-
-                    b.Property<string>("Phote");
 
                     b.Property<long?>("RelationUserId");
 

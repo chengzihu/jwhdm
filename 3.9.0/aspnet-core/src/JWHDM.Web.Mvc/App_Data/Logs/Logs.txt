@@ -16267,3 +16267,248 @@ INFO  2018-08-15 06:06:08,229 [17   ] ore.Mvc.Internal.ControllerActionInvoker -
 INFO  2018-08-15 06:06:08,306 [17   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type '<>f__AnonymousType1`2[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IReadOnlyList`1[[JWHDM.Users.Dto.UserDto, JWHDM.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
 INFO  2018-08-15 06:06:08,317 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Mvc.Controllers.UserInfosController.GetUsers (JWHDM.Web.Mvc) in 316.1363ms
 INFO  2018-08-15 06:06:08,328 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 356.7573ms 200 application/json; charset=utf-8
+DEBUG 2018-08-15 06:26:44,838 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-08-15 06:26:44,877 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2018-08-15 06:26:44,901 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JWHDM.Web.Startup.JWHDMWebMvcModule, JWHDM.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-08-15 06:26:44,904 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JWHDM.JWHDMWebCoreModule, JWHDM.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-08-15 06:26:44,905 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JWHDM.JWHDMApplicationModule, JWHDM.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-08-15 06:26:44,905 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JWHDM.JWHDMCoreModule, JWHDM.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-08-15 06:26:44,905 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-08-15 06:26:44,905 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-08-15 06:26:44,906 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-08-15 06:26:44,906 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-08-15 06:26:44,907 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JWHDM.EntityFrameworkCore.JWHDMEntityFrameworkModule, JWHDM.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-08-15 06:26:44,907 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-08-15 06:26:44,907 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-08-15 06:26:44,907 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-08-15 06:26:44,908 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-08-15 06:26:44,909 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-08-15 06:26:44,909 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-08-15 06:26:44,914 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2018-08-15 06:26:44,998 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-08-15 06:26:44,998 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-08-15 06:26:44,998 [1    ] o.Configuration.LanguageManagementConfig - Converted JWHDM (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-08-15 06:26:44,998 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-08-15 06:26:45,437 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: JWHDM.EntityFrameworkCore.JWHDMDbContext, JWHDM.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-08-15 06:26:46,097 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2018-08-15 06:26:46,149 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-08-15 06:26:46,160 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-08-15 06:26:46,165 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: JWHDM
+DEBUG 2018-08-15 06:26:46,170 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-08-15 06:26:46,210 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-08-15 06:26:46,261 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 12 classes define auto mapping attributes
+DEBUG 2018-08-15 06:26:46,261 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JWHDM.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2018-08-15 06:26:46,266 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JWHDM.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-08-15 06:26:46,266 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JWHDM.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-08-15 06:26:46,266 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JWHDM.Users.Dto.CreateUserDto
+DEBUG 2018-08-15 06:26:46,266 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JWHDM.Users.Dto.UserDto
+DEBUG 2018-08-15 06:26:46,266 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JWHDM.Users.Dto.UsersDeleteDto
+DEBUG 2018-08-15 06:26:46,267 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JWHDM.Roles.Dto.CreateRoleDto
+DEBUG 2018-08-15 06:26:46,267 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JWHDM.Roles.Dto.PermissionDto
+DEBUG 2018-08-15 06:26:46,267 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JWHDM.Roles.Dto.RoleDto
+DEBUG 2018-08-15 06:26:46,267 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JWHDM.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-08-15 06:26:46,267 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JWHDM.MultiTenancy.Dto.TenantDto
+DEBUG 2018-08-15 06:26:46,267 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JWHDM.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+INFO  2018-08-15 06:26:50,602 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/  
+INFO  2018-08-15 06:26:52,143 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action JWHDM.Web.Controllers.HomeController.Index (JWHDM.Web.Mvc)
+WARN  2018-08-15 06:26:52,362 [7    ] Mvc.Authorization.AbpAuthorizationFilter - Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 43
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 98
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 57
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 43
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 98
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 57
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+INFO  2018-08-15 06:26:52,374 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2018-08-15 06:26:52,393 [7    ] Microsoft.AspNetCore.Mvc.ChallengeResult - Executing ChallengeResult with authentication schemes ().
+INFO  2018-08-15 06:26:52,425 [7    ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was challenged.
+INFO  2018-08-15 06:26:52,430 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Controllers.HomeController.Index (JWHDM.Web.Mvc) in 281.5722ms
+INFO  2018-08-15 06:26:52,522 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1924.2121ms 302 
+INFO  2018-08-15 06:26:52,627 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Account/Login?ReturnUrl=%2F  
+INFO  2018-08-15 06:26:52,684 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action JWHDM.Web.Controllers.AccountController.Login (JWHDM.Web.Mvc)
+INFO  2018-08-15 06:26:54,066 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JWHDM.Web.Controllers.AccountController.Login (JWHDM.Web.Mvc) with arguments (, /, ) - Validation state: Valid
+INFO  2018-08-15 06:26:54,078 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JWHDM.Web.Controllers.AccountController.Login (JWHDM.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 10.1591ms.
+INFO  2018-08-15 06:26:54,630 [12   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-08-15 06:26:55,519 [12   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 971.2595ms.
+INFO  2018-08-15 06:26:55,525 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Controllers.AccountController.Login (JWHDM.Web.Mvc) in 2840.8319ms
+INFO  2018-08-15 06:26:55,550 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2923.0383ms 200 text/html; charset=utf-8
+INFO  2018-08-15 06:26:55,582 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=636699112062123449  
+INFO  2018-08-15 06:26:55,583 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpScripts/GetScripts?v=636699112062123449  
+INFO  2018-08-15 06:26:55,593 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Shared/Components/TenantChange/Default.js?v=636699112154908756  
+INFO  2018-08-15 06:26:55,595 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/jquery-validation/src/localization/messages_zh_Hans.js  
+INFO  2018-08-15 06:26:55,603 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 7.9757ms 404 
+INFO  2018-08-15 06:26:55,610 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)
+INFO  2018-08-15 06:26:55,615 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+INFO  2018-08-15 06:26:55,622 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) with arguments () - Validation state: Valid
+INFO  2018-08-15 06:26:55,665 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2018-08-15 06:26:55,666 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Shared/Components/TenantChange/Default.js'. Physical path: 'D:\12\jwhdm\3.9.0\aspnet-core\src\JWHDM.Web.Mvc\wwwroot\view-resources\Views\Shared\Components\TenantChange\Default.js'
+INFO  2018-08-15 06:26:55,666 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 73.6171ms 200 application/javascript
+INFO  2018-08-15 06:26:55,830 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 207.5926ms.
+INFO  2018-08-15 06:26:55,839 [10   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2018-08-15 06:26:55,841 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 230.8163ms
+INFO  2018-08-15 06:26:55,842 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 258.5775ms 200 application/x-javascript; charset=utf-8
+INFO  2018-08-15 06:26:55,855 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 190.1011ms.
+INFO  2018-08-15 06:26:55,857 [11   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2018-08-15 06:26:55,858 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 242.4623ms
+INFO  2018-08-15 06:26:55,858 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 276.4395ms 200 application/x-javascript
+INFO  2018-08-15 06:26:56,312 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/jquery-validation/src/localization/messages_zh_Hans.js  
+INFO  2018-08-15 06:26:56,314 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.4732ms 404 
+INFO  2018-08-15 06:26:58,803 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/Account/Login application/x-www-form-urlencoded 256
+INFO  2018-08-15 06:26:58,816 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action JWHDM.Web.Controllers.AccountController.Login (JWHDM.Web.Mvc)
+INFO  2018-08-15 06:26:58,942 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JWHDM.Web.Controllers.AccountController.Login (JWHDM.Web.Mvc) with arguments (JWHDM.Web.Models.Account.LoginViewModel, /, ) - Validation state: Valid
+INFO  2018-08-15 06:27:00,283 [12   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application signed in.
+INFO  2018-08-15 06:27:00,289 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JWHDM.Web.Controllers.AccountController.Login (JWHDM.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 1347.0988ms.
+INFO  2018-08-15 06:27:00,576 [3    ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-08-15 06:27:00,589 [3    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Controllers.AccountController.Login (JWHDM.Web.Mvc) in 1772.697ms
+INFO  2018-08-15 06:27:00,589 [3    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1785.6086ms 200 application/json; charset=utf-8
+INFO  2018-08-15 06:27:00,603 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/  
+INFO  2018-08-15 06:27:00,645 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action JWHDM.Web.Controllers.HomeController.Index (JWHDM.Web.Mvc)
+INFO  2018-08-15 06:27:00,690 [7    ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-08-15 06:27:00,695 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JWHDM.Web.Controllers.HomeController.Index (JWHDM.Web.Mvc) - Validation state: Valid
+INFO  2018-08-15 06:27:00,696 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JWHDM.Web.Controllers.HomeController.Index (JWHDM.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.6671ms.
+INFO  2018-08-15 06:27:00,747 [3    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2018-08-15 06:27:01,412 [4    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 667.7078ms.
+INFO  2018-08-15 06:27:01,421 [4    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Controllers.HomeController.Index (JWHDM.Web.Mvc) in 775.8358ms
+INFO  2018-08-15 06:27:01,422 [4    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 818.4297ms 200 text/html; charset=utf-8
+INFO  2018-08-15 06:27:07,148 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Tenants/Index  
+INFO  2018-08-15 06:27:07,169 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Tenants", area = ""}. Executing action JWHDM.Web.Controllers.TenantsController.Index (JWHDM.Web.Mvc)
+INFO  2018-08-15 06:27:07,179 [11   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-08-15 06:27:07,263 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JWHDM.Web.Controllers.TenantsController.Index (JWHDM.Web.Mvc) - Validation state: Valid
+INFO  2018-08-15 06:27:07,264 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JWHDM.Web.Controllers.TenantsController.Index (JWHDM.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.0683ms.
+INFO  2018-08-15 06:27:07,444 [12   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2018-08-15 06:27:07,510 [12   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 76.8492ms.
+INFO  2018-08-15 06:27:07,510 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Controllers.TenantsController.Index (JWHDM.Web.Mvc) in 341.5961ms
+INFO  2018-08-15 06:27:07,511 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 362.9178ms 200 text/html; charset=utf-8
+INFO  2018-08-15 06:27:07,554 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Tenants/Index.js  
+INFO  2018-08-15 06:27:07,556 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Tenants/Index.js'. Physical path: 'D:\12\jwhdm\3.9.0\aspnet-core\src\JWHDM.Web.Mvc\wwwroot\view-resources\Views\Tenants\Index.js'
+INFO  2018-08-15 06:27:07,556 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2.1404ms 200 application/javascript
+INFO  2018-08-15 06:27:07,759 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Tenants/GetTenants?limit=10&offset=0&departmentname=&statu=&_=1534285627587 application/json 
+INFO  2018-08-15 06:27:07,774 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetTenants", controller = "Tenants", area = ""}. Executing action JWHDM.Web.Controllers.TenantsController.GetTenants (JWHDM.Web.Mvc)
+INFO  2018-08-15 06:27:07,775 [7    ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-08-15 06:27:07,786 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JWHDM.Web.Controllers.TenantsController.GetTenants (JWHDM.Web.Mvc) with arguments (JWHDM.Users.Dto.RoleQueryDto) - Validation state: Valid
+INFO  2018-08-15 06:27:07,935 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JWHDM.Web.Controllers.TenantsController.GetTenants (JWHDM.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 149.0919ms.
+INFO  2018-08-15 06:27:07,977 [12   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type '<>f__AnonymousType1`2[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IReadOnlyList`1[[JWHDM.MultiTenancy.Dto.TenantDto, JWHDM.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+INFO  2018-08-15 06:27:08,004 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Controllers.TenantsController.GetTenants (JWHDM.Web.Mvc) in 229.3566ms
+INFO  2018-08-15 06:27:08,004 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 245.2787ms 200 application/json; charset=utf-8
+INFO  2018-08-15 06:27:10,756 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/UserInfos/Index  
+INFO  2018-08-15 06:27:10,766 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "UserInfos", area = ""}. Executing action JWHDM.Web.Mvc.Controllers.UserInfosController.Index (JWHDM.Web.Mvc)
+INFO  2018-08-15 06:27:10,768 [11   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-08-15 06:27:10,841 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JWHDM.Web.Mvc.Controllers.UserInfosController.Index (JWHDM.Web.Mvc) - Validation state: Valid
+INFO  2018-08-15 06:27:10,841 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JWHDM.Web.Mvc.Controllers.UserInfosController.Index (JWHDM.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.2761ms.
+INFO  2018-08-15 06:27:11,089 [12   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2018-08-15 06:27:11,141 [12   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 57.2592ms.
+INFO  2018-08-15 06:27:11,141 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Mvc.Controllers.UserInfosController.Index (JWHDM.Web.Mvc) in 374.4037ms
+INFO  2018-08-15 06:27:11,142 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 385.7371ms 200 text/html; charset=utf-8
+INFO  2018-08-15 06:27:11,212 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/UserInfos/Index.js  
+INFO  2018-08-15 06:27:11,215 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/UserInfos/Index.js'. Physical path: 'D:\12\jwhdm\3.9.0\aspnet-core\src\JWHDM.Web.Mvc\wwwroot\view-resources\Views\UserInfos\Index.js'
+INFO  2018-08-15 06:27:11,215 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3.1038ms 200 application/javascript
+INFO  2018-08-15 06:27:11,460 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/UserInfos/GetUsers?limit=10&offset=0&departmentname=&statu=&_=1534285631229 application/json 
+INFO  2018-08-15 06:27:11,482 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetUsers", controller = "UserInfos", area = ""}. Executing action JWHDM.Web.Mvc.Controllers.UserInfosController.GetUsers (JWHDM.Web.Mvc)
+INFO  2018-08-15 06:27:11,483 [10   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-08-15 06:27:11,489 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JWHDM.Web.Mvc.Controllers.UserInfosController.GetUsers (JWHDM.Web.Mvc) with arguments (JWHDM.Users.Dto.UserQueryDto) - Validation state: Valid
+INFO  2018-08-15 06:27:11,784 [4    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JWHDM.Web.Mvc.Controllers.UserInfosController.GetUsers (JWHDM.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 295.1785ms.
+INFO  2018-08-15 06:27:11,862 [4    ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type '<>f__AnonymousType1`2[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IReadOnlyList`1[[JWHDM.Users.Dto.UserDto, JWHDM.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+INFO  2018-08-15 06:27:11,878 [4    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Mvc.Controllers.UserInfosController.GetUsers (JWHDM.Web.Mvc) in 396.1579ms
+INFO  2018-08-15 06:27:11,879 [4    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 418.5461ms 200 application/json; charset=utf-8
+INFO  2018-08-15 06:27:13,228 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Users  
+INFO  2018-08-15 06:27:13,240 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Users", area = ""}. Executing action JWHDM.Web.Controllers.UsersController.Index (JWHDM.Web.Mvc)
+INFO  2018-08-15 06:27:13,242 [11   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-08-15 06:27:13,244 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JWHDM.Web.Controllers.UsersController.Index (JWHDM.Web.Mvc) - Validation state: Valid
+INFO  2018-08-15 06:27:13,244 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JWHDM.Web.Controllers.UsersController.Index (JWHDM.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.2099ms.
+INFO  2018-08-15 06:27:13,293 [12   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2018-08-15 06:27:13,334 [12   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 44.0999ms.
+INFO  2018-08-15 06:27:13,334 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Controllers.UsersController.Index (JWHDM.Web.Mvc) in 93.9348ms
+INFO  2018-08-15 06:27:13,334 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 106.2703ms 200 text/html; charset=utf-8
+INFO  2018-08-15 06:27:13,380 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Users/Index.js  
+INFO  2018-08-15 06:27:13,388 [11   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Users/Index.js'. Physical path: 'D:\12\jwhdm\3.9.0\aspnet-core\src\JWHDM.Web.Mvc\wwwroot\view-resources\Views\Users\Index.js'
+INFO  2018-08-15 06:27:13,388 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 8.1143ms 200 application/javascript
+INFO  2018-08-15 06:27:13,554 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Users/GetUsers?limit=10&offset=0&departmentname=&statu=&_=1534285633422 application/json 
+INFO  2018-08-15 06:27:13,572 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetUsers", controller = "Users", area = ""}. Executing action JWHDM.Web.Controllers.UsersController.GetUsers (JWHDM.Web.Mvc)
+INFO  2018-08-15 06:27:13,573 [13   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-08-15 06:27:13,576 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JWHDM.Web.Controllers.UsersController.GetUsers (JWHDM.Web.Mvc) with arguments (JWHDM.Users.Dto.UserQueryDto) - Validation state: Valid
+INFO  2018-08-15 06:27:13,621 [4    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JWHDM.Web.Controllers.UsersController.GetUsers (JWHDM.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 45.3796ms.
+INFO  2018-08-15 06:27:13,655 [12   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type '<>f__AnonymousType1`2[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IReadOnlyList`1[[JWHDM.Users.Dto.UserDto, JWHDM.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+INFO  2018-08-15 06:27:13,655 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Controllers.UsersController.GetUsers (JWHDM.Web.Mvc) in 83.4897ms
+INFO  2018-08-15 06:27:13,655 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 101.8471ms 200 application/json; charset=utf-8
+INFO  2018-08-15 06:27:14,560 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Roles  
+INFO  2018-08-15 06:27:14,571 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Roles", area = ""}. Executing action JWHDM.Web.Controllers.RolesController.Index (JWHDM.Web.Mvc)
+INFO  2018-08-15 06:27:14,572 [13   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-08-15 06:27:14,633 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JWHDM.Web.Controllers.RolesController.Index (JWHDM.Web.Mvc) - Validation state: Valid
+INFO  2018-08-15 06:27:15,029 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JWHDM.Web.Controllers.RolesController.Index (JWHDM.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 395.9321ms.
+INFO  2018-08-15 06:27:15,087 [12   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2018-08-15 06:27:15,144 [12   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 61.5727ms.
+INFO  2018-08-15 06:27:15,145 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Controllers.RolesController.Index (JWHDM.Web.Mvc) in 573.5149ms
+INFO  2018-08-15 06:27:15,145 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 584.9868ms 200 text/html; charset=utf-8
+INFO  2018-08-15 06:27:15,231 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Roles/Index.js  
+INFO  2018-08-15 06:27:15,233 [13   ] NetCore.StaticFiles.StaticFileMiddleware - The file /view-resources/Views/Roles/Index.js was not modified
+INFO  2018-08-15 06:27:15,235 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4.8336ms 304 application/javascript
+INFO  2018-08-15 06:27:15,377 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Roles/GetRoles?limit=10&offset=0&departmentname=&statu=&_=1534285635238 application/json 
+INFO  2018-08-15 06:27:15,388 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetRoles", controller = "Roles", area = ""}. Executing action JWHDM.Web.Controllers.RolesController.GetRoles (JWHDM.Web.Mvc)
+INFO  2018-08-15 06:27:15,388 [13   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-08-15 06:27:15,391 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JWHDM.Web.Controllers.RolesController.GetRoles (JWHDM.Web.Mvc) with arguments (JWHDM.Users.Dto.RoleQueryDto) - Validation state: Valid
+INFO  2018-08-15 06:27:15,494 [4    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JWHDM.Web.Controllers.RolesController.GetRoles (JWHDM.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 103.0904ms.
+INFO  2018-08-15 06:27:15,537 [4    ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type '<>f__AnonymousType1`2[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IReadOnlyList`1[[JWHDM.Roles.Dto.RoleDto, JWHDM.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+INFO  2018-08-15 06:27:15,544 [4    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Controllers.RolesController.GetRoles (JWHDM.Web.Mvc) in 156.5363ms
+INFO  2018-08-15 06:27:15,544 [4    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 167.3756ms 200 application/json; charset=utf-8
+INFO  2018-08-15 06:27:16,154 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Roles  
+INFO  2018-08-15 06:27:16,161 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Roles", area = ""}. Executing action JWHDM.Web.Controllers.RolesController.Index (JWHDM.Web.Mvc)
+INFO  2018-08-15 06:27:16,162 [13   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-08-15 06:27:16,164 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JWHDM.Web.Controllers.RolesController.Index (JWHDM.Web.Mvc) - Validation state: Valid
+INFO  2018-08-15 06:27:16,412 [4    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JWHDM.Web.Controllers.RolesController.Index (JWHDM.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 247.3543ms.
+INFO  2018-08-15 06:27:16,446 [4    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2018-08-15 06:27:16,475 [4    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 29.6058ms.
+INFO  2018-08-15 06:27:16,475 [4    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Controllers.RolesController.Index (JWHDM.Web.Mvc) in 313.7789ms
+INFO  2018-08-15 06:27:16,476 [4    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 321.1538ms 200 text/html; charset=utf-8
+INFO  2018-08-15 06:27:16,667 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Roles/GetRoles?limit=10&offset=0&departmentname=&statu=&_=1534285636526 application/json 
+INFO  2018-08-15 06:27:16,677 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetRoles", controller = "Roles", area = ""}. Executing action JWHDM.Web.Controllers.RolesController.GetRoles (JWHDM.Web.Mvc)
+INFO  2018-08-15 06:27:16,678 [7    ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-08-15 06:27:16,731 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JWHDM.Web.Controllers.RolesController.GetRoles (JWHDM.Web.Mvc) with arguments (JWHDM.Users.Dto.RoleQueryDto) - Validation state: Valid
+INFO  2018-08-15 06:27:17,141 [4    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JWHDM.Web.Controllers.RolesController.GetRoles (JWHDM.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 409.9662ms.
+INFO  2018-08-15 06:27:17,198 [4    ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type '<>f__AnonymousType1`2[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IReadOnlyList`1[[JWHDM.Roles.Dto.RoleDto, JWHDM.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+INFO  2018-08-15 06:27:17,199 [4    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Controllers.RolesController.GetRoles (JWHDM.Web.Mvc) in 521.0021ms
+INFO  2018-08-15 06:27:17,199 [4    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 531.7509ms 200 application/json; charset=utf-8
+INFO  2018-08-15 06:27:17,302 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/About  
+INFO  2018-08-15 06:27:17,313 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "About", area = ""}. Executing action JWHDM.Web.Controllers.AboutController.Index (JWHDM.Web.Mvc)
+INFO  2018-08-15 06:27:17,313 [7    ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-08-15 06:27:17,315 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JWHDM.Web.Controllers.AboutController.Index (JWHDM.Web.Mvc) - Validation state: Valid
+INFO  2018-08-15 06:27:17,315 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JWHDM.Web.Controllers.AboutController.Index (JWHDM.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.2071ms.
+INFO  2018-08-15 06:27:17,367 [14   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2018-08-15 06:27:17,394 [14   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 30.6177ms.
+INFO  2018-08-15 06:27:17,394 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Controllers.AboutController.Index (JWHDM.Web.Mvc) in 81.4678ms
+INFO  2018-08-15 06:27:17,396 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 94.225ms 200 text/html; charset=utf-8
+INFO  2018-08-15 06:27:18,268 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Roles  
+INFO  2018-08-15 06:27:18,274 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Roles", area = ""}. Executing action JWHDM.Web.Controllers.RolesController.Index (JWHDM.Web.Mvc)
+INFO  2018-08-15 06:27:18,275 [13   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-08-15 06:27:18,277 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JWHDM.Web.Controllers.RolesController.Index (JWHDM.Web.Mvc) - Validation state: Valid
+INFO  2018-08-15 06:27:18,549 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JWHDM.Web.Controllers.RolesController.Index (JWHDM.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 271.6048ms.
+INFO  2018-08-15 06:27:18,593 [14   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2018-08-15 06:27:18,631 [14   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 38.5151ms.
+INFO  2018-08-15 06:27:18,631 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Controllers.RolesController.Index (JWHDM.Web.Mvc) in 357.4156ms
+INFO  2018-08-15 06:27:18,632 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 364.6874ms 200 text/html; charset=utf-8
+INFO  2018-08-15 06:27:18,813 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Roles/GetRoles?limit=10&offset=0&departmentname=&statu=&_=1534285638686 application/json 
+INFO  2018-08-15 06:27:18,818 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetRoles", controller = "Roles", area = ""}. Executing action JWHDM.Web.Controllers.RolesController.GetRoles (JWHDM.Web.Mvc)
+INFO  2018-08-15 06:27:18,819 [13   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-08-15 06:27:18,821 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JWHDM.Web.Controllers.RolesController.GetRoles (JWHDM.Web.Mvc) with arguments (JWHDM.Users.Dto.RoleQueryDto) - Validation state: Valid
+INFO  2018-08-15 06:27:19,047 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JWHDM.Web.Controllers.RolesController.GetRoles (JWHDM.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 225.4443ms.
+INFO  2018-08-15 06:27:19,091 [14   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type '<>f__AnonymousType1`2[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IReadOnlyList`1[[JWHDM.Roles.Dto.RoleDto, JWHDM.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+INFO  2018-08-15 06:27:19,091 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Controllers.RolesController.GetRoles (JWHDM.Web.Mvc) in 272.5146ms
+INFO  2018-08-15 06:27:19,091 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 278.62ms 200 application/json; charset=utf-8
+INFO  2018-08-15 06:27:19,606 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Roles  
+INFO  2018-08-15 06:27:19,621 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Roles", area = ""}. Executing action JWHDM.Web.Controllers.RolesController.Index (JWHDM.Web.Mvc)
+INFO  2018-08-15 06:27:19,623 [13   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-08-15 06:27:19,628 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JWHDM.Web.Controllers.RolesController.Index (JWHDM.Web.Mvc) - Validation state: Valid
+INFO  2018-08-15 06:27:19,877 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JWHDM.Web.Controllers.RolesController.Index (JWHDM.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 248.8136ms.
+INFO  2018-08-15 06:27:19,910 [14   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2018-08-15 06:27:19,932 [14   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 22.5514ms.
+INFO  2018-08-15 06:27:19,932 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Controllers.RolesController.Index (JWHDM.Web.Mvc) in 311.0456ms
+INFO  2018-08-15 06:27:19,933 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 326.9471ms 200 text/html; charset=utf-8
+INFO  2018-08-15 06:27:20,146 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Roles/GetRoles?limit=10&offset=0&departmentname=&statu=&_=1534285639991 application/json 
+INFO  2018-08-15 06:27:20,156 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetRoles", controller = "Roles", area = ""}. Executing action JWHDM.Web.Controllers.RolesController.GetRoles (JWHDM.Web.Mvc)
+INFO  2018-08-15 06:27:20,157 [10   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-08-15 06:27:20,159 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JWHDM.Web.Controllers.RolesController.GetRoles (JWHDM.Web.Mvc) with arguments (JWHDM.Users.Dto.RoleQueryDto) - Validation state: Valid
+INFO  2018-08-15 06:27:20,242 [4    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JWHDM.Web.Controllers.RolesController.GetRoles (JWHDM.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 83.1622ms.
+INFO  2018-08-15 06:27:20,275 [14   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type '<>f__AnonymousType1`2[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IReadOnlyList`1[[JWHDM.Roles.Dto.RoleDto, JWHDM.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+INFO  2018-08-15 06:27:20,275 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JWHDM.Web.Controllers.RolesController.GetRoles (JWHDM.Web.Mvc) in 119.167ms
+INFO  2018-08-15 06:27:20,275 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 128.9099ms 200 application/json; charset=utf-8
