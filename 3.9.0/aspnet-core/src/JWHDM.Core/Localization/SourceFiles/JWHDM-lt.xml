@@ -84,5 +84,7 @@
     <text name="EditUser">Keisti vartotoją</text>
     <text name="TenantIdIsNotActive{0}">Savininkas su Id {0} yra neaktyvus</text>
     <text name="UnknownTenantId{0}">Nežinomas savininko Id {0}</text>
+    <text name="Task List" value="Task List" />
+    <text name="UserInfos" value="UserInfos" />
   </texts>
 </localizationDictionary>

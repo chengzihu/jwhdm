@@ -12,7 +12,8 @@ namespace JWHDM.Web.Models.Roles
 
         public bool HasPermission(PermissionDto permission)
         {
-            return Permissions != null && Role.Permissions.Any(p => p == permission.Name);
+            var has = Permissions != null && Role.Permissions.Any(p => p == permission.Name);
+            return has;
         }
     }
 }

@@ -104,6 +104,9 @@
     <Content Update="wwwroot\view-resources\Views\Roles\Index.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Update="wwwroot\view-resources\Views\UserInfos\Index.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\view-resources\Views\Users\Index.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

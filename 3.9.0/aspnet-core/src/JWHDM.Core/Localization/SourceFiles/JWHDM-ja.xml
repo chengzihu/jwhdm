@@ -53,5 +53,7 @@
     <text name="Yes" value="はい" />
     <text name="No" value="いいえ" />
     <text name="Optional" value="オプション" />
+    <text name="Task List" value="Task List" />
+    <text name="UserInfos" value="UserInfos" />
   </texts>
 </localizationDictionary>
