@@ -92,6 +92,10 @@
     <text name="Skins">Temas</text>
     <text name="Settings">Configurações</text>
     <text name="Task List" value="Task List" />
-    <text name="UserInfos" value="UserInfos" />
+    <text name="UserMembers" value="UserMembers" />
+    <text name="UserMembers.Query" value="UserMembers Query"/>
+    <text name="UserMembers.Create" value="UserMembers Create"/>
+    <text name="UserMembers.Update" value="UserMembers Update"/>
+    <text name="UserMembers.Delete" value="UserMembers Delete"/>
   </texts>
 </localizationDictionary>

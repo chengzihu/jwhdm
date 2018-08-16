@@ -84,6 +84,10 @@
 	<text name="UserDetails">Kullanıcı detayları</text>
 	<text name="UserRoles">Kullanıcı rolleri</text>		
   <text name="Task List" value="Task List" />
-  <text name="UserInfos" value="UserInfos" />
+  <text name="UserMembers" value="UserMembers" />
+  <text name="UserMembers.Query" value="UserMembers Query"/>
+  <text name="UserMembers.Create" value="UserMembers Create"/>
+  <text name="UserMembers.Update" value="UserMembers Update"/>
+  <text name="UserMembers.Delete" value="UserMembers Delete"/>
   </texts>
 </localizationDictionary>

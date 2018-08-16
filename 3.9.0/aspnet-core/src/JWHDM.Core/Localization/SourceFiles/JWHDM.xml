@@ -23,6 +23,10 @@
     <text name="LogIn" value="登录" />
     <text name="LoginFailed" value="登录失败!" />
     <text name="Task List" value="任务清单" />
-    <text name="UserInfos" value="会员详细" />
+    <text name="UserMembers" value="会员详情" />
+    <text name="UserMembers.Query" value="会员查询"/>
+    <text name="UserMembers.Create" value="会员创建"/>
+    <text name="UserMembers.Update" value="会员更新"/>
+    <text name="UserMembers.Delete" value="会员删除"/>
   </texts>
 </localizationDictionary>

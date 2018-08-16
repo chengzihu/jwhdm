@@ -30,11 +30,12 @@ namespace JWHDM.Web.Startup
                     )
                 ).AddItem(
                             new MenuItemDefinition(
-                                "UserInfos",
-                                L("UserInfos"),
-                                url: "UserInfos/Index",
+                                "UserMembers",
+                                L("UserMembers"),
+                                url: "UserMembers",
                                 icon: "fa fa-tasks",
-                                requiresAuthentication: true
+                                //requiresAuthentication: true
+                                requiredPermissionName: PermissionNames.Pages_UserMembers
                             )
                  ).AddItem(
                     new MenuItemDefinition(

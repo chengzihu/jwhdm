@@ -3,6 +3,10 @@ using Abp.Zero.EntityFrameworkCore;
 using JWHDM.Authorization.Roles;
 using JWHDM.Authorization.Users;
 using JWHDM.MultiTenancy;
+using JWHDM.TenantAgencys;
+using JWHDM.UserMembers;
+using JWHDM.UserEmployees;
+using JWHDM.Challenges;
 
 namespace JWHDM.EntityFrameworkCore
 {
@@ -15,9 +19,9 @@ namespace JWHDM.EntityFrameworkCore
         {
         }
 
-        public virtual DbSet<TenantAgency.TenantAgency> TenantAgencys { get; set; }
-        public virtual DbSet<UserMember.UserMember> UserMembers { get; set; }
-        public virtual DbSet<UserEmployee.UserEmployee> UserEmployees { get; set; }
-        public virtual DbSet<Challenge.Challenge> Challenges { get; set; }
+        public virtual DbSet<TenantAgency> TenantAgencys { get; set; }
+        public virtual DbSet<UserMember> UserMembers { get; set; }
+        public virtual DbSet<UserEmployee> UserEmployees { get; set; }
+        public virtual DbSet<Challenge> Challenges { get; set; }
     }
 }
