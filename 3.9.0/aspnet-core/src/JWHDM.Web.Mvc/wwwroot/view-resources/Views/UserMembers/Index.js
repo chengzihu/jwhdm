@@ -1,4 +1,4 @@
-﻿(function() {
+﻿(function () {
     $(function() {
         $(function () {
             //1.初始化Table
@@ -133,7 +133,7 @@
                             sortable: true
                         },
                         {
-                            field: 'type',
+                            field: 'selectedLessonMinds',
                             title: '会员类型',
                             formatter: showMemberType,
                             align: 'center',
@@ -316,8 +316,9 @@
                 var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
                     limit: params.limit,   //页面大小
                     offset: params.offset,  //页码
-                    departmentname: $("#txt_search_departmentname").val(),
-                    statu: $("#txt_search_statu").val()
+                    name: $("#txt_search_name").val(),
+                    minweight: $("#txt_search_minweight").val(),
+                    maxweight: $("#txt_search_maxweight").val()
                 };
                 return temp;
             };
@@ -346,17 +347,12 @@
         //格式化显示任务状态
         //有待改进-获取任务状态列表
         function showMemberType(value, row, index) {
-            var formatState;
-            if (value == 0) {
-                formatState = '<span class="pull-center label label-success">大课</span>';
+            var formatState="";
+            for (var i = 0; i < value.length; i++) {
+                formatState += value[i].mindName;
+                formatState += ",";
             }
-            else if (value == 1) {
-                formatState = '<span class="pull-center label label-info">私教</span>';
-            }
-            else {
-                formatState = '<span class="pull-center label label-info">未定义</span>';
-            }
-            return formatState;
+            return formatState.substring(0, formatState.length-1);
         }
 
             //格式化显示任务状态
@@ -383,76 +379,12 @@
                 //初始化页面上面的按钮事件
                 //查询角色
                 $("#btn_query").click(function () {
-                    m_pagerow = 0;
-                    $("#tb_departments").bootstrapTable('refresh', { url: "UserMembers/GetUserMembers" });
-                });
-                //新增按钮单击
-                $("#btn_add").click(function () {
-                    var param = {};
-                    $.ajax({
-                        type: "GET",
-                        url: "GetRoles",
-                        data: param,
-                        beforeSend: function () {
-                        },
-                        success: function (result) {
-                            var modeldata = { id: "", name: "", surname: "", userName: "", fullName: "", emailAddress: "", creationTime: "", lastLoginTime: "", roleNames: "", allRoleNames: result, isActive: true };
-                            ShowModal(modeldata, "新增用户");
-                        },
-                        error: function () {
-
-                        },
-                        complete: function () {
-
-                        }
-                    });
-                });
-
-                //新增提交
-                $("#btn_submit").click(function () {
-                    var title = $("#myModalLabel").text();
-                    var actionUrl = "Update";
-                    if ("新增用户" == title) {
-                        actionUrl = "Create";
-                    }
-
-                    var roleNamesData = [];
-                    $("#roleGroup").find(":checkbox:checked").each(function () {
-                        roleNamesData.push($(this).val());
-                    });
-                    //if (roleNamesData.length > 0) {
-                    //    newPerson.roleNames = [roleNamesData.join(',')];
-                    //}
-                    var id = $("#txt_Id").val() == "" ? 0 : $("#txt_Id").val();
-                    var newPerson = {
-                        "id": id,
-                        "UserName": $("#txt_UserName").val(),
-                        "EmailAddress": $("#txt_EmailAddress").val(),
-                        "Name": $("#txt_Name").val(),
-                        //"FullName": $("#txt_FullName").val(),
-                        "Surname": $("#txt_Surname").val(),
-                        "Password": "123456",
-                        "CreationTime": $("#txt_CreationTime").val(),
-                        "LastLoginTime": $("#txt_LastLoginTime").val(),
-                        "isActive": document.getElementById('isActive').checked,
-                        roleNames: roleNamesData
-                    };
-
-                    abp.ajax({
-                        url: actionUrl,
-                        data: JSON.stringify(newPerson)
-                    }).done(function (data) {
-                        var actionUrl = "GetUsers";
-                        $("#tb_departments").bootstrapTable('refresh', { url: actionUrl });
-                        abp.notify.success('updated new person with id = ' + data.id);
-                    }).fail(function (data) {
-                        abp.notify.error('Something is wrong!');
-                    });
+                    var actionUrl = "UserMembers/GetUserMembers";
+                    $("#tb_departments").bootstrapTable('refresh', { url: actionUrl });
                 });
 
                 //编辑按钮单击
                 $("#btn_edit").click(function () {
-                    //debugger;
                     var arrselections = $("#tb_departments").bootstrapTable('getSelections');
                     if (arrselections.length > 1) {
                         toastr.warning('只能选择一行进行编辑');
@@ -463,32 +395,80 @@
                         return;
                     }
 
-                    var actionUrl = "GetRoles";
                     var param = { id: arrselections[0].id };
-                    var arrselections = $("#tb_departments").bootstrapTable('getSelections');
+                    var title = "编辑";
                     $.ajax({
-                        type: "GET",
-                        url: actionUrl,
-                        data: param,
-                        beforeSend: function () {
+                        url: abp.appPath + 'Roles/EditRoleModal?roleId=' + param.id,
+                        type: 'GET',
+                        contentType: 'application/html',
+                        success: function (content) {
+                            $('#EditRoleModal div.modal-content').html(content);
+                            $("#EditRoleModalLabel").text(title);
+                            $('#EditRoleModal').modal();
                         },
-                        success: function (result) {
-                            //debugger;
-                            var modeldata = { id: arrselections[0].id, name: arrselections[0].name, surname: arrselections[0].surname, userName: arrselections[0].userName, fullName: arrselections[0].fullName, emailAddress: arrselections[0].emailAddress, creationTime: arrselections[0].creationTime, lastLoginTime: arrselections[0].lastLoginTime, roleNames: arrselections[0].roleNames, allRoleNames: result, isActive: arrselections[0].isActive };
-                            ShowModal(modeldata, "编辑用户");
-                        },
-                        error: function () {
-
-                        },
-                        complete: function () {
-
+                        error: function (e) {
+                            abp.notify.error('Something is wrong!');
                         }
+                    });
+                });
+
+                //新增按钮单击
+                $("#btn_add").click(function () {
+                    var title = "新增";
+                    $("#CreateModalLabel").text(title);
+                    $('#CreateModal').modal();
+                });
+
+                $("#btn_save").click(function () {
+                    var title = $("#CreateModalLabel").text();
+                    var id = $("#txt_id").val() == "" ? 0 : $("#txt_id").val();
+                   
+                    var gender = 0;//男
+                    if (document.getElementById('txt_genderwomen').checked) {
+                        gender = 1;//女
+                    }
+
+                    var param = {
+                        "id": id,
+                        "userName": $("#txt_UserName").val(),
+                        "number": $("#txt_Number").val(),
+                        "iDCard": $("#txt_IDCard").val(),
+                        "weight": $("txt_Weight").val(),
+                        "armspan": $("txt_Armspan").val(),
+                        "gender": gender,
+                    };
+
+                    var lessonsData = [];
+                    $("#lessonGroup").find(":checkbox:checked").each(function () {
+                        lessonsData.push($(this).val());
+                    });
+                    param.lessonMindIds = lessonsData;
+
+                    //var permissionsData = [];
+                    //$("#createRoleGroup").find(":checkbox:checked").each(function () {
+                    //    permissionsData.push($(this).val());
+                    //});
+                    //param.permissions = permissionsData;
+                    //if (permissionsData.length > 0) {
+                    //    param.permissions = [permissionsData.join(',')];
+                    //}
+                    //data: JSON.stringify(param)
+                    abp.ajax({
+                        url: "UserMembers/Create",
+                        ContentType: "application/json",
+                        data: JSON.stringify(param)
+                    }).done(function (data) {
+                        var actionUrl = "UserMembers/GetUserMembers";
+                        $("#tb_departments").bootstrapTable('refresh', { url: actionUrl });
+                        abp.notify.success('updated new person with id = ' + data.id);
+                    }).fail(function (data) {
+                        abp.notify.error('Something is wrong!');
+                        //abp.notify.error(data.message);
                     });
                 });
 
                 //删除角色
                 $("#btn_delete").click(function () {
-                    var actionUrl = "Delete";
                     var arrselections = $("#tb_departments").bootstrapTable('getSelections');
                     if (arrselections.length > 1) {
                         toastr.warning('只能选择一行进行编辑');
@@ -499,104 +479,20 @@
                         return;
                     }
 
-                    var newPerson = {
-                        "id": arrselections[0].id
-                    };
-                    //debugger;
                     abp.ajax({
-                        url: actionUrl,
-                        data: JSON.stringify(newPerson)
+                        url: "Roles/Delete?=" + arrselections[0].id,
+                        type: 'GET'
+                        //data: JSON.stringify({
+                        //    "id": arrselections[0].id
+                        //})
                     }).done(function (data) {
-                        var actionUrl = "GetUsers";
-                        $("#tb_departments").bootstrapTable('refresh', { url: actionUrl });
+                        $("#tb_departments").bootstrapTable('refresh', { url: "Roles/GetRoles" });
                         abp.notify.success('updated new person with id = ' + data.id);
                     }).fail(function (data) {
                         abp.notify.error('Something is wrong!');
                     });
                 });
-
-                //权限授权
-                    //$("#btn_authorize").click(function () {
-                    //    var arrselections = $("#tb_departments").bootstrapTable('getSelections');
-                    //    if (arrselections.length > 1) {
-                    //        toastr.warning('只能选择一个角色进行授权');
-                    //        return;
-                    //    }
-                    //    if (arrselections.length <= 0) {
-                    //        toastr.warning('请选择有效数据');
-                    //        return;
-                    //    }
-                    //    var actionUrl = "@Url.Action("AuthorizePermission")";
-                    //    var param = { id: arrselections[0].Id };
-                    //    ShowModal_Authorize(actionUrl, param, "权限授权");
-                    //});
-            //模态框中“权限授权”保存
-            //var $modal = $("#authorizeModal");
-            //    $("#btnSave", $modal).click(function () {
-            //        var actionUrl = "@Url.Action("AuthorizePermission")";
-            //        SaveModal_Authorize(actionUrl);
-            //    });
-                ////模态框中“新增编辑角色”保存
-                //var $formmodal = $("#modal-form");
-                //$("#btnSave", $formmodal).click(function () {
-                //    var $tb = $("#tb_departments");
-                //    SaveModal($tb);
-                //});
-
-                //模态框中“新增编辑角色”保存
-                //var $formmodal = $("#myModal");
-                //$("#btn_submit",$formmodal).click(function () {
-                //    alert("dfddf");
-                //    var $tb = $("#tb_departments");
-                //    SaveModal($tb);
-                //});
-
-                /*******弹出表单*********/
-                function ShowModal(param, title) {
-                    $("#txt_Id").val(param.id);
-                    $("#txt_Surname").val(param.surname);
-                    $("#txt_Name").val(param.name);
-                    $("#txt_EmailAddress").val(param.emailAddress);
-                    $("#txt_UserName").val(param.userName);
-                    $("#txt_FullName").val(param.fullName);
-                    $("#txt_CreationTime").val(param.creationTime);
-                    $("#txt_LastLoginTime").val(param.lastLoginTime);
-                    if (param.isActive) {
-                        $("#isActive").prop("checked", "checked");
-                    }
-                    else {
-                        $("#isActive").removeProp("checked");
-                    }
-
-                    $("#roleGroup").empty();
-                    $.each(param.allRoleNames, function (n, value) {
-                        var roleGroup = '<div class="col-sm-6">';
-                        roleGroup += '<input type="checkbox" name="role" value="';
-                        roleGroup += value.name;
-                        roleGroup += '" title="';
-                        roleGroup += value.displayName;
-                        roleGroup += '" class="filled-in" id="';
-                        roleGroup += "role" + value.id + '"';
-                        if ($.inArray(value.normalizedName, param.roleNames) > -1) {
-                            roleGroup += ' checked=""';
-                        }
-                        roleGroup += '/>';
-                        roleGroup += '<label for="';
-                        roleGroup += "role" + value.id + '"';
-                        roleGroup += ' title="';
-                        roleGroup += value.displayName;
-                        roleGroup += '">';
-                        roleGroup += value.name;
-                        roleGroup += '</label>';
-                        roleGroup += '</div>';
-                        $("#roleGroup").append(roleGroup);
-                    });
-
-                    $("#myModalLabel").text(title);
-                    $('#myModal').modal();
-                }
             };
-
             return oInit;
         };
         

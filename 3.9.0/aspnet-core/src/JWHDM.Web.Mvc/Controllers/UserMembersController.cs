@@ -2,16 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.AspNetCore.Mvc.Authorization;
 using Abp.AutoMapper;
+using Abp.Domain.Uow;
+using Abp.Json;
+using Abp.Runtime.Session;
 using Abp.Web.Models;
 using JWHDM.Authorization;
 using JWHDM.Controllers;
+using JWHDM.LessonMinds;
+using JWHDM.UserMemberLessonMinds;
+using JWHDM.UserMemberLessonMinds.Dto;
 using JWHDM.UserMembers;
 using JWHDM.UserMembers.Dto;
 using JWHDM.Users;
 using JWHDM.Users.Dto;
+using JWHDM.Web.Models.UserMembers;
 using JWHDM.Web.Models.Users;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,17 +27,28 @@ namespace JWHDM.Web.Mvc.Controllers
 {
     [AbpMvcAuthorize(PermissionNames.Pages_UserMembers)]
     public class UserMembersController:JWHDMControllerBase
-    {
-        private readonly IUserMemberAppService _userMemberAppService;
+    { 
+        private IUserMemberAppService _userMemberAppService;
+        private IUserMemberLessonMindAppService _userMemberLessonMindAppService;
+        private ILessonMindsAppService _lessonMindsAppService;
 
-        public UserMembersController(IUserMemberAppService userMemberAppService)
+        public UserMembersController(IUserMemberAppService userMemberAppService,
+            IUserMemberLessonMindAppService userMemberLessonMindAppService,
+            ILessonMindsAppService lessonMindsAppService)
         {
+            AbpSession = NullAbpSession.Instance;
             _userMemberAppService = userMemberAppService;
+            _userMemberLessonMindAppService = userMemberLessonMindAppService;
+            _lessonMindsAppService = lessonMindsAppService;
         }
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            var lessonMindDtos =(await _lessonMindsAppService.GetAll(new QueryLessonMindDto{ MaxResultCount = int.MaxValue })).Items;
+            var model = new UserMemberListViewModel {
+                LessonMinds = lessonMindDtos
+            };
+            return View(model);
         }
 
         [AbpMvcAuthorize(PermissionNames.Pages_Pages_UserMembers_Query, PermissionNames.Pages_Pages_UserMembers_Create)]
@@ -38,46 +57,67 @@ namespace JWHDM.Web.Mvc.Controllers
         /// </summary>
         /// <returns></returns>
         [DontWrapResult] //不需要AbpJsonResult
-        public async Task<ActionResult> GetUserMembers(QueryUserMemberDto input)
+        public async Task<JsonResult> GetUserMembers(GetUserMembersPagedResultRequestDto input)
         {
-            var users = (await _userMemberAppService.GetAll(new GetUserMembersPagedResultRequestDto { MaxResultCount = int.MaxValue })).Items; // Paging not implemented yet
+            //var resultfdssd = _userMemberLessonMindAppService.GetAllIncluding(new GetUserMemberLessonMindsPagedResultRequestInput());
+
+            //var dfdsfdd = await _userMemberAppService.GetAllIncluding(new GetUserMembersPagedResultRequestDto { MaxResultCount = int.MaxValue });
+
+            input.MaxResultCount = input.limit;
+            input.SkipCount = input.limit * input.offset;
+            var users = (await _userMemberAppService.GetAllIncluding(input)).Items; // Paging not implemented yet
+            
             //users=await _userAppService.get
-            var userlist = users;
             //if (!string.IsNullOrEmpty(input.departmentname))
             //    userlist = users.Where(x => x.FullName.Contains(input.departmentname)).Skip(input.offset * input.limit).Take(input.limit).ToList();
 
-            var result = new { total = userlist.Count(), rows = userlist };
-            return Json(result);
+            var result = new { total = users.Count(), rows = users };
+
+            var resultJson = Json(result);
+
+            //System.Diagnostics.Debug.WriteLine("*************:" + end+","+ result.ToJsonString());
+            return resultJson;
         }
 
-        ////[DontWrapResult] //不需要AbpJsonResult
-        ////public async Task<JsonResult> GetRoles()
-        ////{
-        ////    var roles = (await _userMemberAppService.GetRoles()).Items;
-        ////    return Json(roles);
-        ////}
-
-        //public async Task<JsonResult> Create([FromBody]CreateUserDto input)
-        //{
-        //    var user = await _userMemberAppService.Create(input);
-        //    return Json(user);
-        //}
-
         //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<JsonResult> Update([FromBody]UserDto input)
-        //{
-        //    var user = await _userMemberAppService.Update(input);
-        //    return Json(user);
-        //}
+        [ValidateAntiForgeryToken]
+        //[AbpAuthorize(PermissionNames.Pages_Users)]
+        //[DontWrapResult] //不需要AbpJsonResult
+        public async Task<JsonResult> Delete(long id)
+        {
+            var entityDto = new EntityDto<long>(id);
+            await _userMemberAppService.Delete(entityDto);
+            return Json(entityDto);
+        }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<JsonResult> Delete([FromBody]UsersDeleteDto viewModel)
-        //{
-        //    var entityDto = viewModel.MapTo<EntityDto<long>>();
-        //    await _userMemberAppService.Delete(entityDto);
-        //    return Json(entityDto);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<JsonResult> Create([FromBody]CreateUserMemberDto input)
+        {
+            var role = await _userMemberAppService.Create(input);
+            return Json(role);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        //[AbpAuthorize(PermissionNames.Pages_Users)]
+        //[DontWrapResult] //不需要AbpJsonResult
+        public async Task<JsonResult> Update([FromBody]UpdateUserMemberDto input)
+        {
+            var role = await _userMemberAppService.Update(input);
+            return Json(role);
+        }
+
+        [ValidateAntiForgeryToken]
+        //[DontWrapResult] //不需要AbpJsonResult]
+        public async Task<ActionResult> EditRoleModal(long userMemberId)
+        {
+            var userMember = await _userMemberAppService.Get(new EntityDto<long>(userMemberId));
+            var model = new EditUserMemberModalViewModel
+            {
+                //UserMember = userMember
+            };
+            return PartialView("_EditUserMemberModal", model);
+        }
     }
 }

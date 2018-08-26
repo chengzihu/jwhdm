@@ -7,6 +7,8 @@ using JWHDM.TenantAgencys;
 using JWHDM.UserMembers;
 using JWHDM.UserEmployees;
 using JWHDM.Challenges;
+using JWHDM.LessonMinds;
+using JWHDM.UserMemberLessonMinds;
 
 namespace JWHDM.EntityFrameworkCore
 {
@@ -23,5 +25,15 @@ namespace JWHDM.EntityFrameworkCore
         public virtual DbSet<UserMember> UserMembers { get; set; }
         public virtual DbSet<UserEmployee> UserEmployees { get; set; }
         public virtual DbSet<Challenge> Challenges { get; set; }
+        public virtual DbSet<UserMemberLessonMind> UserMemberLessonMinds { get; set; }
+        public virtual DbSet<LessonMind> LessonMinds { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            //modelBuilder.Entity<PayPay>().Property(p => p.Money).HasColumnType("decimal(18,2)");
+            //modelBuilder.Entity<UserMember>().HasMany(t=>t.LessonMinds);
+            //modelBuilder.Entity<LessonMind>().HasMany(t=>t.UserMembers);
+        }
     }
 }

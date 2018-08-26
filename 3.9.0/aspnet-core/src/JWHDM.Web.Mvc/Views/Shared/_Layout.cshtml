@@ -23,6 +23,7 @@
     Layout = null;
     AbpAntiForgeryManager.SetCookie(Context);
     var uiTheme = await SettingManager.GetSettingValueAsync(AppSettingNames.UiTheme);
+    var user= Context.User.Identity.Name;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -39,6 +40,7 @@
     @await Html.PartialAsync("_SiteCssPartial")
     @RenderSection("styles", required: false)
     @await Html.PartialAsync("_SiteScriptsPartial")
+    @RenderSection("scripts", required: false)
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -53,7 +55,7 @@
                         <img src="~/adminlte/AdminLTE-2.4.3/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p>Alexander Pierce</p>
+                        <p>@Context.User.Identity.Name</p>
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
                 </div>
@@ -81,7 +83,7 @@
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
-            <div class="p-3">
+            <div class="p-3" style="visibility:collapse">
                 <h5>Title</h5>
                 <p>Sidebar content</p>
             </div>
@@ -91,7 +93,7 @@
             <div class="pull-right hidden-xs">
                 <b>Version</b> 2.4.0
             </div>
-            <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+            <strong>Copyright &copy; 2018-2038 <a href="#">bits</a>.</strong> All rights
             reserved.
         </footer>
     </div>
@@ -102,8 +104,9 @@
     </script>
     @WebResourceManager.RenderScripts()
     <!-- View specific scripts -->
-    @RenderSection("scripts", required: false)
+
     @RenderSection("pagescripts", required: false)
+   
 </body>
     
 </html>

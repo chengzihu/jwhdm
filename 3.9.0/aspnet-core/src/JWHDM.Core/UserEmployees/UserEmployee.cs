@@ -10,7 +10,7 @@ using System.Text;
 
 namespace JWHDM.UserEmployees
 {
-    public class UserEmployee : Entity<long>, IHasCreationTime, IHasDeletionTime, IHasModificationTime, ICreationAudited
+    public class UserEmployee : Entity<long>,IMayHaveTenant,IHasCreationTime, IHasDeletionTime, IHasModificationTime, ICreationAudited
     {
         [Required]
         [MaxLength(20)]
@@ -57,8 +57,6 @@ namespace JWHDM.UserEmployees
         public bool IsDeleted { get; set; }
         public DateTime? LastModificationTime { get; set; }
         public long? CreatorUserId { get; set; }
-        [ForeignKey("RelationTenantId")]
-        public Tenant RelationTenant { get; set; }
-        public int? RelationTenantId { get; set; }
+        public int? TenantId { get; set; }
     }
 }

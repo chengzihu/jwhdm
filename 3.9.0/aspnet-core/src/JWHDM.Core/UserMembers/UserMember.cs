@@ -1,7 +1,9 @@
 ﻿using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
 using JWHDM.Authorization.Users;
+using JWHDM.LessonMinds;
 using JWHDM.MultiTenancy;
+using JWHDM.UserMemberLessonMinds;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +13,7 @@ using System.Text;
 
 namespace JWHDM.UserMembers
 {
-    public class UserMember : Entity<long>, IHasCreationTime, IHasDeletionTime, IHasModificationTime, ICreationAudited
+    public class UserMember : Entity<long>, IMayHaveTenant, IHasCreationTime, IHasDeletionTime, IHasModificationTime, ICreationAudited
     {
         [Required]
         [MaxLength(20)]
@@ -59,11 +61,11 @@ namespace JWHDM.UserMembers
         /// </summary>
         public DateTime? JoinExpiry{ get; set; }
 
-        [DefaultValue(0)]
         /// <summary>
         /// 会员类型，0：大课会员，1：私教会员
         /// </summary>
-        public int? Type { get; set; }
+        public IList<UserMemberLessonMind> UserMemberLessonMinds { get; set; }
+
         [DefaultValue(0)]
         /// <summary>
         /// 会员费
@@ -108,9 +110,6 @@ namespace JWHDM.UserMembers
         public DateTime? LastModificationTime { get; set; }
         [Required]
         public long? CreatorUserId { get; set; }
-
-        [ForeignKey("RelationTenantId")]
-        public Tenant RelationTenant { get; set; }
-        public int? RelationTenantId { get; set; }
+        public int? TenantId { get; set; }
     }
 }

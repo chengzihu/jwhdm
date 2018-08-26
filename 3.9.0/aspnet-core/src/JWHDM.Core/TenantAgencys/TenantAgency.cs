@@ -12,12 +12,8 @@ namespace JWHDM.TenantAgencys
     /// <summary>
     /// 租户代理人--租户详细
     /// </summary>
-    public class TenantAgency : Entity, IHasCreationTime, IHasDeletionTime, IHasModificationTime, ICreationAudited
+    public class TenantAgency : Entity,IMayHaveTenant,IHasCreationTime, IHasDeletionTime, IHasModificationTime, ICreationAudited
     {
-        [ForeignKey("TenantId")]
-        public Tenant RelationTenat { get; set; }
-        public  int? TenantId { get; set; }
-
         public  string Code { get; set; }
 
         public  string Name { get; set; }
@@ -59,5 +55,6 @@ namespace JWHDM.TenantAgencys
         /// 是否发布
         /// </summary>
         public bool IsPublic { get; set; }
+        public int? TenantId { get; set; }
     }
 }

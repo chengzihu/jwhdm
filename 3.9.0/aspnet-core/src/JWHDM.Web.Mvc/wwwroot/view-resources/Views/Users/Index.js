@@ -72,14 +72,14 @@
                             valign: 'middle'
                         },
                         {
-                            field: 'name',
-                            title: '名称',
+                            field: 'userName',
+                            title: '用户帐号',
                             align: 'center',
                             valign: 'middle'
                         },
                         {
-                            field: 'userName',
-                            title: '用户名称',
+                            field: 'name',
+                            title: '名称',
                             align: 'center',
                             valign: 'middle'
                         },
@@ -93,19 +93,22 @@
                             field: 'fullName',
                             title: '全名',
                             align: 'center',
-                            valign: 'middle'
+                            valign: 'middle',
+                            visible: false
                         },
                         {
                             field: 'roleNames',
                             title: '角色',
                             align: 'center',
-                            valign: 'middle'
+                            valign: 'middle',
+                            visible: false
                         },
                         {
                             field: 'emailAddress',
                             title: '邮箱',
                             align: 'center',
-                            valign: 'middle'
+                            valign: 'middle',
+                            visible: false
                         },
                         {
                             field: 'creationTime',
@@ -113,7 +116,8 @@
                             align: 'center',
                             valign: 'middle',
                             formatter: showDate,
-                            sortable: true
+                            sortable: true,
+                            visible: false
                         },
                         {
                             field: 'lastLoginTime',

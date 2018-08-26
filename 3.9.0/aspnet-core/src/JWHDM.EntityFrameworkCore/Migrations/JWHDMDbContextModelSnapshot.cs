@@ -1009,7 +1009,7 @@ namespace JWHDM.Migrations
 
                     b.Property<DateTime?>("LastModificationTime");
 
-                    b.Property<int?>("RelationTenantId");
+                    b.Property<int?>("TenantId");
 
                     b.Property<string>("ToChallengeDeclaration");
 
@@ -1021,11 +1021,33 @@ namespace JWHDM.Migrations
 
                     b.HasIndex("ConfirmUserId");
 
-                    b.HasIndex("RelationTenantId");
-
                     b.HasIndex("ToChallengerId");
 
                     b.ToTable("Challenges");
+                });
+
+            modelBuilder.Entity("JWHDM.LessonMinds.LessonMind", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<string>("MindName");
+
+                    b.Property<int?>("TenantId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LessonMinds");
                 });
 
             modelBuilder.Entity("JWHDM.MultiTenancy.Tenant", b =>
@@ -1118,8 +1140,6 @@ namespace JWHDM.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TenantId");
-
                     b.ToTable("TenantAgencys");
                 });
 
@@ -1172,9 +1192,9 @@ namespace JWHDM.Migrations
 
                     b.Property<string>("Photo");
 
-                    b.Property<int?>("RelationTenantId");
-
                     b.Property<long?>("RelationUserId");
+
+                    b.Property<int?>("TenantId");
 
                     b.Property<int?>("Type");
 
@@ -1182,11 +1202,33 @@ namespace JWHDM.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RelationTenantId");
-
                     b.HasIndex("RelationUserId");
 
                     b.ToTable("UserEmployees");
+                });
+
+            modelBuilder.Entity("JWHDM.UserMemberLessonMinds.UserMemberLessonMind", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<int>("LessonMindId");
+
+                    b.Property<int?>("TenantId");
+
+                    b.Property<long>("UserMemberId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LessonMindId");
+
+                    b.HasIndex("UserMemberId");
+
+                    b.ToTable("UserMemberLessonMinds");
                 });
 
             modelBuilder.Entity("JWHDM.UserMembers.UserMember", b =>
@@ -1253,19 +1295,15 @@ namespace JWHDM.Migrations
                     b.Property<string>("Photo")
                         .HasMaxLength(200);
 
-                    b.Property<int?>("RelationTenantId");
-
                     b.Property<long?>("RelationUserId");
 
-                    b.Property<double>("TotalLesson");
+                    b.Property<int?>("TenantId");
 
-                    b.Property<int?>("Type");
+                    b.Property<double>("TotalLesson");
 
                     b.Property<double>("Weight");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RelationTenantId");
 
                     b.HasIndex("RelationUserId");
 
@@ -1435,10 +1473,6 @@ namespace JWHDM.Migrations
                         .HasForeignKey("ConfirmUserId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("JWHDM.MultiTenancy.Tenant", "RelationTenant")
-                        .WithMany()
-                        .HasForeignKey("RelationTenantId");
-
                     b.HasOne("JWHDM.Authorization.Users.User", "ToChallenger")
                         .WithMany()
                         .HasForeignKey("ToChallengerId")
@@ -1464,30 +1498,28 @@ namespace JWHDM.Migrations
                         .HasForeignKey("LastModifierUserId");
                 });
 
-            modelBuilder.Entity("JWHDM.TenantAgencys.TenantAgency", b =>
-                {
-                    b.HasOne("JWHDM.MultiTenancy.Tenant", "RelationTenat")
-                        .WithMany()
-                        .HasForeignKey("TenantId");
-                });
-
             modelBuilder.Entity("JWHDM.UserEmployees.UserEmployee", b =>
                 {
-                    b.HasOne("JWHDM.MultiTenancy.Tenant", "RelationTenant")
-                        .WithMany()
-                        .HasForeignKey("RelationTenantId");
-
                     b.HasOne("JWHDM.Authorization.Users.User", "RelationUser")
                         .WithMany()
                         .HasForeignKey("RelationUserId");
                 });
 
+            modelBuilder.Entity("JWHDM.UserMemberLessonMinds.UserMemberLessonMind", b =>
+                {
+                    b.HasOne("JWHDM.LessonMinds.LessonMind", "LessonMind")
+                        .WithMany("UserMemberLessonMinds")
+                        .HasForeignKey("LessonMindId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("JWHDM.UserMembers.UserMember", "UserMember")
+                        .WithMany("UserMemberLessonMinds")
+                        .HasForeignKey("UserMemberId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("JWHDM.UserMembers.UserMember", b =>
                 {
-                    b.HasOne("JWHDM.MultiTenancy.Tenant", "RelationTenant")
-                        .WithMany()
-                        .HasForeignKey("RelationTenantId");
-
                     b.HasOne("JWHDM.Authorization.Users.User", "RelationUser")
                         .WithMany()
                         .HasForeignKey("RelationUserId");

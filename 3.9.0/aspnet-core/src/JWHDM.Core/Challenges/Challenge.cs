@@ -9,7 +9,7 @@ using System.Text;
 
 namespace JWHDM.Challenges
 {
-    public class Challenge : Entity, IHasCreationTime, IHasDeletionTime, IHasModificationTime, ICreationAudited
+    public class Challenge : Entity, IMayHaveTenant,IHasCreationTime, IHasDeletionTime, IHasModificationTime, ICreationAudited
     {
         [ForeignKey("ChallengerId")]
         public User Challenger { get; set; }
@@ -38,8 +38,6 @@ namespace JWHDM.Challenges
         /// 是否发布
         /// </summary>
         public bool IsPublic { get; set; }
-        [ForeignKey("RelationTenantId")]
-        public Tenant RelationTenant { get; set; }
-        public int? RelationTenantId { get; set; }
+        public int? TenantId { get; set; }
     }
 }

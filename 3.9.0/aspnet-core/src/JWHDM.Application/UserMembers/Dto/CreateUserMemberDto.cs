@@ -39,7 +39,7 @@ namespace JWHDM.UserMembers.Dto
         /// <summary>
         /// 会员类型，0：大课会员，1：私教会员
         /// </summary>
-        public int? Type { get; set; }
+        public List<int> LessonMindIds { get; set; }
         /// <summary>
         /// 会员费
         /// </summary>
@@ -67,5 +67,6 @@ namespace JWHDM.UserMembers.Dto
         public bool IsDeleted { get; set; }
         public DateTime? LastModificationTime { get; set; }
         public long? CreatorUserId { get; set; }
+        public int? TenantId { get; set; }
     }
 }
