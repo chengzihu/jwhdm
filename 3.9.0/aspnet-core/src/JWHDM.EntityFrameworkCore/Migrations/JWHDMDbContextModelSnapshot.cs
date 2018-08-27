@@ -1295,17 +1295,16 @@ namespace JWHDM.Migrations
                     b.Property<string>("Photo")
                         .HasMaxLength(200);
 
-                    b.Property<long?>("RelationUserId");
-
                     b.Property<int?>("TenantId");
 
                     b.Property<double>("TotalLesson");
 
+                    b.Property<string>("UserName")
+                        .HasMaxLength(50);
+
                     b.Property<double>("Weight");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RelationUserId");
 
                     b.ToTable("UserMembers");
                 });
@@ -1516,13 +1515,6 @@ namespace JWHDM.Migrations
                         .WithMany("UserMemberLessonMinds")
                         .HasForeignKey("UserMemberId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("JWHDM.UserMembers.UserMember", b =>
-                {
-                    b.HasOne("JWHDM.Authorization.Users.User", "RelationUser")
-                        .WithMany()
-                        .HasForeignKey("RelationUserId");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>

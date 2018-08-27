@@ -12,10 +12,7 @@ namespace JWHDM.UserMembers
 {
     public interface IUserMemberAppService : IAsyncCrudAppService<UserMemberDto,long, GetUserMembersPagedResultRequestDto, CreateUserMemberDto, UpdateUserMemberDto>//, IApplicationService
     {
-        //Task<ListResultDto<RoleDto>> GetRoles();
-
-        //Task ChangeLanguage(ChangeUserLanguageDto input);
-
         Task<PagedResultDto<UserMemberDto>> GetAllIncluding(GetUserMembersPagedResultRequestDto input);
+        Task<UserMemberDto> GetIncluding(long userMemberId);
     }
 }

@@ -23,13 +23,16 @@ namespace JWHDM.UserMembers
         public string Photo { get; set; }
         [DefaultValue("")]
         [MaxLength(50)]
+        public string UserName { get; set; }
+        [DefaultValue("")]
+        [MaxLength(50)]
         public string Name { get; set; }
         [DefaultValue("")]
         [MaxLength(20)]
         public string IDCard { get; set; }
-        [ForeignKey("RelationUserId")]
-        public User RelationUser { get; set; }
-        public long? RelationUserId { get; set; }
+        //[ForeignKey("RelationUserId")]
+        //public User RelationUser { get; set; }
+        //public long? RelationUserId { get; set; }
         [DefaultValue(0)]
         public double Height { get; set; }
         [DefaultValue(0)]

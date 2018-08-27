@@ -11,5 +11,6 @@ namespace JWHDM.UserMemberLessonMinds
     public interface IUserMemberLessonMindAppService:IAsyncCrudAppService<UserMemberLessonMindDto, long, GetUserMemberLessonMindsPagedResultRequestInput, CreateUserMemberLessonMindInput, UpdateUserMemberLessonMindInput>
     {
         Task<PagedResultDto<UserMemberLessonMindDto>> GetAllIncluding(GetUserMemberLessonMindsPagedResultRequestInput input);
+        //Task<UserMemberLessonMindDto> Create(CreateUserMemberLessonMindInput input);
     }
 }

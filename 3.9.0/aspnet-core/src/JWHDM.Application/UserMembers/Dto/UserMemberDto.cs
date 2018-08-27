@@ -24,6 +24,11 @@ namespace JWHDM.UserMembers.Dto
         [DefaultValue("")]
         [MaxLength(200)]
         public string Photo { get; set; }
+
+        [DefaultValue("")]
+        [MaxLength(50)]
+        public string UserName { get; set; }
+
         [DefaultValue("")]
         [MaxLength(50)]
         public string Name { get; set; }
@@ -63,7 +68,7 @@ namespace JWHDM.UserMembers.Dto
         /// </summary>
         public DateTime? JoinExpiry { get; set; }
 
-        private IList<UserMemberLessonMindDto> _userMemberLessonMinds;
+        //private IList<UserMemberLessonMindDto> _userMemberLessonMinds;
         /// <summary>
         /// 会员类型，0：大课会员，1：私教会员
         /// </summary>

@@ -15,5 +15,6 @@ namespace JWHDM.LessonMinds
         //Task<ListResultDto<RoleDto>> GetRoles();
 
         //Task ChangeLanguage(ChangeUserLanguageDto input);
+        void SeedData();
     }
 }

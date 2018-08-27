@@ -13,6 +13,7 @@ namespace JWHDM.UserMembers.Dto
         [MaxLength(20)]
         public string Number { get; set; }
         public string Photo { get; set; }
+        public string UserName { get; set; }
         public string Name { get; set; }
         public string IDCard { get; set; }
         //public User RelationUser { get; set; }
@@ -52,7 +53,7 @@ namespace JWHDM.UserMembers.Dto
         /// 总课时
         /// </summary>
         public double TotalLesson { get; set; }
-        public double AttendanceAddress { get; set; }
+        public string AttendanceAddress { get; set; }
 
         /// <summary>
         /// 简介

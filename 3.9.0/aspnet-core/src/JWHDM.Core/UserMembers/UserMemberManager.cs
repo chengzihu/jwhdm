@@ -1,7 +1,10 @@
 ﻿using Abp.Dependency;
 using Abp.Domain.Repositories;
 using Abp.Domain.Services;
+using Abp.Runtime.Session;
 using JWHDM.LessonMinds;
+using JWHDM.UserMemberLessonMinds;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,20 +15,32 @@ namespace JWHDM.UserMembers
     public class UserMemberManager: IDomainService,ITransientDependency
     {
         private readonly IRepository<UserMember, long> _userMemberRepository;
-        
+        private readonly IRepository<UserMemberLessonMind, long> _userMemberLessonMindRepository;
         private readonly IIocResolver _iocResolver;
-        private ILessonMindManager _lessonMindManager;
-        public UserMemberManager(IRepository<UserMember, long> userMemberRepository, IIocResolver iocResolver, ILessonMindManager lessonMindManager)
+        public UserMemberManager(IRepository<UserMember, long> userMemberRepository, IIocResolver iocResolver,IRepository<UserMemberLessonMind, long> userMemberLessonMindRepository)
         {
             _userMemberRepository = userMemberRepository;
             _iocResolver = iocResolver;
             //var personService1 = _iocResolver.Resolve<IRepository<LessonMind>>();
-            _lessonMindManager = lessonMindManager;
+            _userMemberLessonMindRepository=userMemberLessonMindRepository;
         }
 
-        public async Task SetGrantedPermissionsAsync(UserMember userMember,LessonMind lessonMind)
+        public async Task<List<UserMemberLessonMind>> SetLessonMindsToUserMemberAsync(long userMemberId,IList<int> lessonMindIds,int? currentTenantId,long? currentUserId)
         {
-            
+            var userMemberLessonMinds = new List<UserMemberLessonMind>();
+            foreach (var lessonMindId in lessonMindIds)
+            {
+                var userMemberLessonMindReturn =await _userMemberLessonMindRepository.InsertOrUpdateAsync(
+                    new UserMemberLessonMind
+                    {
+                        TenantId =currentTenantId,
+                        CreatorUserId =currentUserId,
+                        UserMemberId = userMemberId,
+                        LessonMindId = lessonMindId
+                    });
+                userMemberLessonMinds.Add(userMemberLessonMindReturn);
+            }
+            return userMemberLessonMinds;
         }
     }
 }

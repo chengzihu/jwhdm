@@ -32,5 +32,37 @@ namespace JWHDM.UserMemberLessonMinds
             var resultDto = new PagedResultDto<UserMemberLessonMindDto>(total, userMemberDtoList);
             return resultDto;
         }
+
+        public override Task<UserMemberLessonMindDto> Create(CreateUserMemberLessonMindInput input)
+        {
+            if (AbpSession.TenantId.HasValue)
+            {
+                input.TenantId = AbpSession.TenantId.Value;
+            }
+            if (AbpSession.UserId.HasValue)
+            {
+                input.CreatorUserId = AbpSession.UserId.Value;
+            }
+
+            return base.Create(input);
+        }
+
+        public override Task<UserMemberLessonMindDto> Update(UpdateUserMemberLessonMindInput input)
+        {
+            if (AbpSession.TenantId.HasValue)
+            {
+                input.TenantId = AbpSession.TenantId.Value;
+            }
+            if (AbpSession.UserId.HasValue)
+            {
+                input.CreatorUserId = AbpSession.UserId.Value;
+            }
+            return base.Update(input);
+        }
+
+        public override Task Delete(EntityDto<long> input)
+        {
+            return base.Delete(input);
+        }
     }
 }

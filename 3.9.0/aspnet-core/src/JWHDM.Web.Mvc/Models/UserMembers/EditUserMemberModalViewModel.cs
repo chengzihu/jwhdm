@@ -9,7 +9,13 @@ namespace JWHDM.Web.Models.UserMembers
 {
     public class EditUserMemberModalViewModel
     {
-        public IReadOnlyList<UserMemberDto> UserMembers { get; set; }
-        public IReadOnlyList<LessonMindDto> LessonMindDtos { get; set; }
+        public UserMemberDto UserMember { get; set; }
+        public IReadOnlyList<LessonMindDto> LessonMinds { get; set; }
+
+        public bool IsLessonMindSelected(LessonMindDto lessonMindDto)
+        {
+            var has = UserMember != null && UserMember.UserMemberLessonMinds.Any(p => p.LessonMindId == lessonMindDto.Id);
+            return has;
+        }
     }
 }

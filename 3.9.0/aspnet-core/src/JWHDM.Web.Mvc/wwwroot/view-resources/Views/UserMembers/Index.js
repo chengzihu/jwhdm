@@ -30,7 +30,7 @@
                     queryParams: oTableInit.queryParams,//传递参数（*）
                     sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
                     pageNumber: 1,                       //初始化加载第一页，默认第一页
-                    pageSize: 10,                       //每页的记录行数（*）
+                    pageSize: 25,                       //每页的记录行数（*）
                     pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
                     search: false,                      //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
                     contentType: "application/json",
@@ -68,7 +68,8 @@
                             //width: 50,
                             align: 'center',
                             valign: 'middle',
-                            visible: false
+                            visible: false,
+                            sortable: true
                         },
                         {
                             field: 'number',
@@ -78,8 +79,14 @@
                             visible: false
                         },
                         {
+                            field: 'userName',
+                            title: '登录名',
+                            align: 'center',
+                            valign: 'middle'
+                        },
+                        {
                             field: 'name',
-                            title: '名称',
+                            title: '姓名',
                             align: 'center',
                             valign: 'middle'
                         },
@@ -104,13 +111,13 @@
                             valign: 'middle',
                             visible: false
                         },
-                        {
-                            field: 'relationUserId',
-                            title: '用户编号',
-                            align: 'center',
-                            valign: 'middle',
-                            visible: false
-                        },
+                        //{
+                        //    field: 'relationUserId',
+                        //    title: '用户编号',
+                        //    align: 'center',
+                        //    valign: 'middle',
+                        //    visible: false
+                        //},
                         {
                             field: 'height',
                             title: '身高',
@@ -137,7 +144,8 @@
                             title: '会员类型',
                             formatter: showMemberType,
                             align: 'center',
-                            valign: 'middle'
+                            valign: 'middle',
+                            visible: false
                         },
                         {
                             field: 'maritalStatus',
@@ -155,7 +163,7 @@
                         },
                         {
                             field: 'phoneNumber',
-                            title: '电话',
+                            title: '手机',
                             align: 'center',
                             valign: 'middle',
                             visible: false
@@ -193,14 +201,14 @@
                             title: '出勤课时',
                             align: 'center',
                             valign: 'middle',
-                            visible: true
+                            visible: false
                         },
                         {
                             field: 'totalLesson',
                             title: '全部课时',
                             align: 'center',
                             valign: 'middle',
-                            visible: true
+                            visible: false
                         },
                         {
                             field: 'attendanceAddress',
@@ -221,14 +229,14 @@
                             title: '教练描述',
                             align: 'center',
                             valign: 'middle',
-                            visible: true
+                            visible: false
                         },
                         {
                             field: 'joinExpiry',
                             title: '截止日期',
                             align: 'center',
                             valign: 'middle',
-                            visible: true
+                            visible: false
                         },
                         {
                             field: 'creationTime',
@@ -314,8 +322,10 @@
             //得到查询的参数
             oTableInit.queryParams = function (params) {
                 var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-                    limit: params.limit,   //页面大小
-                    offset: params.offset,  //页码
+                    limit: params.limit,   //页面大小,分页参数，指定每页最多显示多少行
+                    offset: params.offset,  //页码,分页参数，指定偏移量
+                    sort: params.sort,//排序参数，排序字段；
+                    order: params.order,//排序参数，排序方式（升序or降序）
                     name: $("#txt_search_name").val(),
                     minweight: $("#txt_search_minweight").val(),
                     maxweight: $("#txt_search_maxweight").val()
@@ -334,10 +344,10 @@
         //有待改进-获取任务状态列表
         function showGender(value, row, index) {
             var formatState;
-            if (value === true) {
+            if (value === false) {
                 formatState = '<span class="pull-center label label-success">男</span>';
             }
-            if (value === false) {
+            if (value === true) {
                 formatState = '<span class="pull-center label label-info">女</span>';
             }
 
@@ -398,13 +408,13 @@
                     var param = { id: arrselections[0].id };
                     var title = "编辑";
                     $.ajax({
-                        url: abp.appPath + 'Roles/EditRoleModal?roleId=' + param.id,
+                        url: abp.appPath + 'UserMembers/EditModal?userMemberId=' + param.id,
                         type: 'GET',
                         contentType: 'application/html',
                         success: function (content) {
-                            $('#EditRoleModal div.modal-content').html(content);
-                            $("#EditRoleModalLabel").text(title);
-                            $('#EditRoleModal').modal();
+                            $('#EditModal div.modal-content').html(content);
+                            $("#EditModalLabel").text(title);
+                            $('#EditModal').modal();
                         },
                         error: function (e) {
                             abp.notify.error('Something is wrong!');
@@ -428,31 +438,38 @@
                         gender = 1;//女
                     }
 
-                    var param = {
-                        "id": id,
-                        "userName": $("#txt_UserName").val(),
-                        "number": $("#txt_Number").val(),
-                        "iDCard": $("#txt_IDCard").val(),
-                        "weight": $("txt_Weight").val(),
-                        "armspan": $("txt_Armspan").val(),
-                        "gender": gender,
-                    };
-
                     var lessonsData = [];
                     $("#lessonGroup").find(":checkbox:checked").each(function () {
                         lessonsData.push($(this).val());
                     });
-                    param.lessonMindIds = lessonsData;
+                    //param.lessonMindIds = lessonsData;
 
-                    //var permissionsData = [];
-                    //$("#createRoleGroup").find(":checkbox:checked").each(function () {
-                    //    permissionsData.push($(this).val());
-                    //});
-                    //param.permissions = permissionsData;
-                    //if (permissionsData.length > 0) {
-                    //    param.permissions = [permissionsData.join(',')];
-                    //}
-                    //data: JSON.stringify(param)
+                    var param = {
+                        "id": id,
+                        "userName": $("#txt_UserName").val(),
+                        "name": $("#txt_Name").val(),
+                        "number": $("#txt_Number").val(),
+                        "iDCard": $("#txt_IDCard").val(),
+                        "weight": $("#txt_Weight").val(),
+                        "height": $("#txt_Height").val(),
+                        "armspan": $("#txt_Armspan").val(),
+                        "gender": gender,
+                        "lessonMindIds": lessonsData,
+                        //"maritalStatus": $("txt_MaritalStatus").val(),
+                        "address": $("#txt_Address").val(),
+                        "birthdate": $("#txt_Birthdate").find("input").val(),
+                        "phoneNumber": $("#txt_PhoneNumber").val(),
+                        "joinTime": $("#txt_JoinTime").find("input").val(),
+                        "joinExpiry": $("#txt_JoinExpiry").find("input").val(),
+                        "joinAddress": $("#txt_JoinAddress").val(),
+                        "fee": $("#txt_Fee").val(),
+                        "attendanceLesson": $("#txt_AttendanceLesson").val(),
+                        "totalLesson": $("#txt_TotalLesson").val(),
+                        "attendanceAddress": $("#txt_AttendanceAddress").val(),
+                        "abstract": $("#txt_Abstract").val(),
+                        "description": $("#txt_Description").val()
+                    };
+                    
                     abp.ajax({
                         url: "UserMembers/Create",
                         ContentType: "application/json",
@@ -462,8 +479,8 @@
                         $("#tb_departments").bootstrapTable('refresh', { url: actionUrl });
                         abp.notify.success('updated new person with id = ' + data.id);
                     }).fail(function (data) {
-                        abp.notify.error('Something is wrong!');
-                        //abp.notify.error(data.message);
+                        //abp.notify.error('Something is wrong!');
+                        abp.notify.error(data.message);
                     });
                 });
 
@@ -480,13 +497,13 @@
                     }
 
                     abp.ajax({
-                        url: "Roles/Delete?=" + arrselections[0].id,
+                        url: "UserMembers/Delete?=" + arrselections[0].id,
                         type: 'GET'
                         //data: JSON.stringify({
                         //    "id": arrselections[0].id
                         //})
                     }).done(function (data) {
-                        $("#tb_departments").bootstrapTable('refresh', { url: "Roles/GetRoles" });
+                        $("#tb_departments").bootstrapTable('refresh', { url: "UserMembers/GetUserMembers" });
                         abp.notify.success('updated new person with id = ' + data.id);
                     }).fail(function (data) {
                         abp.notify.error('Something is wrong!');

@@ -8,7 +8,7 @@ namespace JWHDM.LessonMinds.Dto
     [AutoMapTo(typeof(LessonMind))]
     public class CreateLessonMindDto
     {
-        public int Mind { get; set; }
+        public string MindName { get; set; }
         //public LessonMind RelationUserMember { get; set; }
         public long RelationUserMemberId { get; set; }
         public DateTime CreationTime { get; set; }

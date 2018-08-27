@@ -44,6 +44,7 @@ namespace JWHDM.Web.Mvc.Controllers
 
         public async Task<ActionResult> Index()
         {
+            _lessonMindsAppService.SeedData();
             var lessonMindDtos =(await _lessonMindsAppService.GetAll(new QueryLessonMindDto{ MaxResultCount = int.MaxValue })).Items;
             var model = new UserMemberListViewModel {
                 LessonMinds = lessonMindDtos
@@ -59,10 +60,6 @@ namespace JWHDM.Web.Mvc.Controllers
         [DontWrapResult] //不需要AbpJsonResult
         public async Task<JsonResult> GetUserMembers(GetUserMembersPagedResultRequestDto input)
         {
-            //var resultfdssd = _userMemberLessonMindAppService.GetAllIncluding(new GetUserMemberLessonMindsPagedResultRequestInput());
-
-            //var dfdsfdd = await _userMemberAppService.GetAllIncluding(new GetUserMembersPagedResultRequestDto { MaxResultCount = int.MaxValue });
-
             input.MaxResultCount = input.limit;
             input.SkipCount = input.limit * input.offset;
             var users = (await _userMemberAppService.GetAllIncluding(input)).Items; // Paging not implemented yet
@@ -71,11 +68,7 @@ namespace JWHDM.Web.Mvc.Controllers
             //if (!string.IsNullOrEmpty(input.departmentname))
             //    userlist = users.Where(x => x.FullName.Contains(input.departmentname)).Skip(input.offset * input.limit).Take(input.limit).ToList();
 
-            var result = new { total = users.Count(), rows = users };
-
-            var resultJson = Json(result);
-
-            //System.Diagnostics.Debug.WriteLine("*************:" + end+","+ result.ToJsonString());
+            var resultJson = Json(new { total = users.Count(), rows = users });
             return resultJson;
         }
 
@@ -94,8 +87,8 @@ namespace JWHDM.Web.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<JsonResult> Create([FromBody]CreateUserMemberDto input)
         {
-            var role = await _userMemberAppService.Create(input);
-            return Json(role);
+            var userMemberCreated = await _userMemberAppService.Create(input);
+            return Json(userMemberCreated);
         }
 
         [HttpPost]
@@ -104,20 +97,30 @@ namespace JWHDM.Web.Mvc.Controllers
         //[DontWrapResult] //不需要AbpJsonResult
         public async Task<JsonResult> Update([FromBody]UpdateUserMemberDto input)
         {
-            var role = await _userMemberAppService.Update(input);
+            UserMemberDto role = null;
+            try
+            {
+                role = await _userMemberAppService.Update(input);
+            }
+            catch (Exception e)
+            {
+
+            }
             return Json(role);
         }
 
         [ValidateAntiForgeryToken]
         //[DontWrapResult] //不需要AbpJsonResult]
-        public async Task<ActionResult> EditRoleModal(long userMemberId)
+        public async Task<ActionResult> EditModal(long userMemberId)
         {
-            var userMember = await _userMemberAppService.Get(new EntityDto<long>(userMemberId));
+            var userMember = await _userMemberAppService.GetIncluding(userMemberId);
+            var lessonMinds =await _lessonMindsAppService.GetAll(new QueryLessonMindDto {  MaxResultCount=int.MaxValue,limit=int.MaxValue});
             var model = new EditUserMemberModalViewModel
             {
-                //UserMember = userMember
+                 UserMember= userMember,
+                LessonMinds =lessonMinds.Items,
             };
-            return PartialView("_EditUserMemberModal", model);
+            return PartialView("_EditModal", model);
         }
     }
 }
