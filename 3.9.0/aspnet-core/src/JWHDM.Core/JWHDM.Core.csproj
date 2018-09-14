@@ -12,7 +12,10 @@
     <RootNamespace>JWHDM</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization\SourceFiles\JWHDM.xml" />
+    <None Remove="Localization\SourceFiles\JWHDM.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\SourceFiles\JWHDM-en.xml" />
     <EmbeddedResource Include="Localization\SourceFiles\JWHDM-es.xml" />
     <EmbeddedResource Include="Localization\SourceFiles\JWHDM-fr.xml" />
     <EmbeddedResource Include="Localization\SourceFiles\JWHDM-it.xml" />
@@ -21,7 +24,7 @@
     <EmbeddedResource Include="Localization\SourceFiles\JWHDM-nl.xml" />
     <EmbeddedResource Include="Localization\SourceFiles\JWHDM-pt-BR.xml" />
     <EmbeddedResource Include="Localization\SourceFiles\JWHDM-tr.xml" />
-    <EmbeddedResource Include="Localization\SourceFiles\JWHDM-zh-Hans.xml" />
+    <EmbeddedResource Include="Localization\SourceFiles\JWHDM.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Abp.AutoMapper" Version="3.7.2" />

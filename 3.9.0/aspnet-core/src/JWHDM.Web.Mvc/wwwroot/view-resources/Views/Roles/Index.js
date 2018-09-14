@@ -68,7 +68,6 @@
                         {
                             field: 'id',
                             title: '编号',
-                            //width: 50,
                             visible: false,
                             align: 'center',
                             valign: 'middle'
@@ -101,14 +100,16 @@
                             field: 'permissions',
                             title: '权限',
                             align: 'center',
-                            valign: 'middle'
+                            valign: 'middle',
+                            visible: false
                         },
                         {
                             field: 'isStatic',
                             title: 'isStatic',
                             formatter: showState,
                             align: 'center',
-                            valign: 'middle'
+                            valign: 'middle',
+                            visible: false
                         }
                     ],
                     onLoadSuccess: function () {

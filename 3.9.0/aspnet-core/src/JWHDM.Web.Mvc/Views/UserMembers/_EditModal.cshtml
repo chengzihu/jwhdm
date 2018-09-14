@@ -1,0 +1,231 @@
+﻿@using JWHDM.Web.Models.Common.Modals
+@model JWHDM.Web.Models.UserMembers.EditUserMemberModalViewModel
+@{
+    Layout = null;
+}
+@*@Html.Partial("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("EditUserMember")))*@
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    <h4 class="modal-title" id="EditModalLabel"></h4>
+</div>
+<div class="modal-body">
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#tabuser" aria-controls="home" role="tab" data-toggle="tab">用户</a></li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane in active" id="tabuser">
+            <form class="form-horizontal" role="form" id="user-form" style="padding: 10px" action="system/users/update.json" method="post">
+                <div class="form-group">
+                    <label for="txt_UserName_edit">登录帐号</label>
+                    <input type="text" name="id_edit" class="form-control" id="id_edit" value="@Model.UserMember.Id" placeholder="id_edit" style="display:none">
+                    <input type="text" name="txt_UserName_edit" value="@Model.UserMember.UserName" class="form-control" id="txt_UserName_edit" placeholder="用户名">
+                </div>
+                <div class="form-group">
+                    <label for="txt_Name_edit">姓名</label>
+                    <input type="text" name="txt_Name_edit" class="form-control" value="@Model.UserMember.Name" id="txt_Name_edit" placeholder="用户名">
+                </div>
+                <div class="form-group">
+                    <label for="txt_Number_edit">会员号</label>
+                    <input type="text" name="txt_Number_edit" value="@Model.UserMember.Number" class="form-control" id="txt_Number_edit" placeholder="会员号">
+                </div>
+                <div class="form-group">
+                    <label for="txt_IDCard_edit">证件</label>
+                    <input type="text" name="txt_IDCard_edit" value="@Model.UserMember.IDCard" class="form-control" id="txt_IDCard_edit" placeholder="证件">
+                </div>
+                <div class="form-group">
+                    <label for="txt_Height_edit">身高</label>
+                    <input type="text" name="txt_Height_edit" value="@Model.UserMember.Height" class="form-control" id="txt_Height_edit" placeholder="身高">
+                </div>
+                <div class="form-group">
+                    <label for="txt_Weight_edit">体重</label>
+                    <input type="text" name="txt_Weight_edit" value="@Model.UserMember.Weight" class="form-control" id="txt_Weight_edit" placeholder="体重">
+                </div>
+                <div class="form-group">
+                    <label for="txt_Armspan_edit">臂展</label>
+                    <input type="text" name="txt_Armspan_edit" value="@Model.UserMember.Armspan" class="form-control" id="txt_Armspan_edit" placeholder="臂展">
+                </div>
+                <div class="form-group">
+                    <label class="label-item single-overflow pull-left" title="出生日期:"> 出生日期：</label>
+                    <div class="col-xs-12">
+                        <div class='input-group date' id='txt_Birthdate_edit'>
+                            <input type='text' name="" value="@Model.UserMember.Birthdate" class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txt_gender_edit">性别</label>
+                    <label name="txt_gender_edit" for="txt_genderman_edit">男</label>
+                    <input name="txt_gender_edit" type="radio" class="filled-in" id="txt_genderman_edit" @(Model.UserMember.Gender == false ? "checked" : "") />
+                    <label name="txt_gender_edit" for="txt_genderwomen_edit">女</label>
+                    <input name="txt_gender_edit" type="radio" class="filled-in" id="txt_genderwomen_edit" @(Model.UserMember.Gender == true ? "checked" : "") />
+                </div>
+                <div class="form-group">
+                    <label for="txt_Address_edit">住址</label>
+                    <input type="text" name="txt_Address_edit" value="@Model.UserMember.Address" class="form-control" id="txt_Address_edit" placeholder="住址">
+                </div>
+                <div class="form-group">
+                    <label for="txt_PhoneNumber_edit">联系方式</label>
+                    <input type="text" name="txt_PhoneNumber_edit" value="@Model.UserMember.PhoneNumber" class="form-control" id="txt_PhoneNumber_edit" placeholder="联系方式">
+                </div>
+
+                <div class="form-group">
+                    <label class="label-item single-overflow pull-left" title="加入日期:"> 加入日期：</label>
+                    <div class="col-xs-12">
+                        <div class='input-group date' id='txt_JoinTime_edit'>
+                            <input type='text' value="@Model.UserMember.JoinTime" name="" class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="label-item single-overflow pull-left" title="截止日期:"> 截止日期：</label>
+                    <div class="col-xs-12">
+                        <div class='input-group date' id='txt_JoinExpiry_edit'>
+                            <input type='text' value="@Model.UserMember.JoinExpiry" class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txt_JoinAddress_edit">加入地点</label>
+                    <input type="text" name="txt_JoinAddress_edit" value="@Model.UserMember.JoinAddress" class="form-control" id="txt_JoinAddress_edit" placeholder="加入地点">
+                </div>
+                <div class="form-group">
+                    <label for="txt_Fee_edit">课程费</label>
+                    <input type="text" name="txt_Fee_edit" value="@Model.UserMember.Fee" class="form-control" id="txt_Fee_edit" placeholder="课程费">
+                </div>
+                @*<div class="tab-pane" id="tablessonGroup">*@
+                <div class="form-group" id="lessonGroup_edit">
+                    <h5><b>会员类型</b></h5>
+                    @*<label for="txt_parentdepartment">会员类型</label>*@
+                    @foreach (var lessonMind in Model.LessonMinds)
+                    {
+                        <div class="col-sm-3">
+                            <input name="@string.Format("lessonmind{0}_edit",lessonMind.Id)" type="checkbox" value="@lessonMind.Id" class="filled-in" id="@string.Format("lessonmind{0}_edit",lessonMind.Id)" @(Model.IsLessonMindSelected(lessonMind) ? "checked" : "") />
+                            <label for="@string.Format("lessonmind{0}_edit",lessonMind.Id)">@lessonMind.MindName</label>
+                        </div>
+                    }
+                </div>
+                @*</div>*@
+                <div class="form-group">
+                    <label for="txt_AttendanceLesson_edit">出勤课时</label>
+                    <input type="text" name="txt_AttendanceLesson_edit" value="@Model.UserMember.AttendanceLesson" class="form-control" id="txt_AttendanceLesson_edit" placeholder="出勤课时">
+                </div>
+                <div class="form-group">
+                    <label for="txt_TotalLesson_edit">全部课时</label>
+                    <input type="text" name="txt_TotalLesson_edit" value="@Model.UserMember.TotalLesson" class="form-control" id="txt_TotalLesson_edit" placeholder="全部课时">
+                </div>
+                <div class="form-group">
+                    <label for="txt_AttendanceAddress_edit">出勤地点</label>
+                    <input type="text" name="txt_AttendanceAddress_edit" value="@Model.UserMember.AttendanceAddress" class="form-control" id="txt_AttendanceAddress_edit" placeholder="出勤地点">
+                </div>
+                <div class="form-group">
+                    <label for="txt_Abstract_edit">个人简介</label>
+                    <input type="text" name="txt_Abstract_edit" value="@Model.UserMember.Abstract" class="form-control" id="txt_Abstract_edit" placeholder="个人简介">
+                </div>
+                <div class="form-group">
+                    <label for="txt_Description_edit">教练评价</label>
+                    <input type="text" name="txt_Description_edit" value="@Model.UserMember.Description" class="form-control" id="txt_Description_edit" placeholder="教练评价">
+                </div>
+
+                <div class="form-group" style="display:none">
+                    <label for="txt_CreationTime_edit">创建时间</label>
+                    <input type="text" name="txt_CreationTime_edit" class="form-control" id="txt_CreationTime_edit" placeholder="创建时间">
+                </div>
+                <div class="form-group" style="display:none">
+                    <label for="txt_LastModificationTime_edit">最近修改时间</label>
+                    <input type="text" name="txt_LastModificationTime_edit" class="form-control" id="txt_LastModificationTime_edit" placeholder="最近修改时间">
+                </div>
+                @*<div class="form-group">
+                        <label for="txt_parentdepartment">创建者</label>
+                        <input type="text" name="txt_parentdepartment" class="form-control" id="txt_CreatorUserId" placeholder="创建者">
+                    </div>*@
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+    <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $(".input-group.date").datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,//自动关闭
+            minView: 2,//最精准的时间选择为日期0-分 1-时 2-日 3-月
+            language: 'zh-CN',
+            weekStart: 0
+        });
+    });
+
+    //新增提交
+    (function () {
+        $(function () {
+            $("#btn_submit").click(function () {
+                var title = $("#EditModalLabel").text();
+                var actionUrl = "UserMembers/Update";
+                var id = $("#id_edit").val() == "" ? 0 : $("#id_edit").val();
+                var gender = 0;//男
+                if (document.getElementById('txt_genderwomen_edit').checked) {
+                    gender = 1;//女
+                }
+
+                var lessonsData = [];
+                $("#lessonGroup_edit").find(":checkbox:checked").each(function () {
+                    lessonsData.push($(this).val());
+                });
+                //param.lessonMindIds = lessonsData;
+
+                var param = {
+                    "id": id,
+                    "userName": $("#txt_UserName_edit").val(),
+                    "name": $("#txt_Name_edit").val(),
+                    "number": $("#txt_Number_edit").val(),
+                    "iDCard": $("#txt_IDCard_edit").val(),
+                    "weight": $("#txt_Weight_edit").val(),
+                    "height": $("#txt_Height_edit").val(),
+                    "armspan": $("#txt_Armspan_edit").val(),
+                    "gender": gender,
+                    "lessonMindIds": lessonsData,
+                    //"maritalStatus": $("txt_MaritalStatus").val(),
+                    "address": $("#txt_Address_edit").val(),
+                    "birthdate": $("#txt_Birthdate_edit").find("input").val(),
+                    "phoneNumber": $("#txt_PhoneNumber_edit").val(),
+                    "joinTime": $("#txt_JoinTime_edit").find("input").val(),
+                    "joinExpiry": $("#txt_JoinExpiry_edit").find("input").val(),
+                    "joinAddress": $("#txt_JoinAddress_edit").val(),
+                    "fee": $("#txt_Fee_edit").val(),
+                    "attendanceLesson": $("#txt_AttendanceLesson_edit").val(),
+                    "totalLesson": $("#txt_TotalLesson_edit").val(),
+                    "attendanceAddress": $("#txt_AttendanceAddress_edit").val(),
+                    "abstract": $("#txt_Abstract_edit").val(),
+                    "description": $("#txt_Description_edit").val()
+                };
+
+                abp.ajax({
+                    url: actionUrl,
+                    ContentType: "application/json",
+                    data: JSON.stringify(param)
+                }).done(function (data) {
+                    var actionUrl = "UserMembers/GetUserMembers";
+                    $("#tb_departments").bootstrapTable('refresh', { url: actionUrl });
+                    abp.notify.success('updated new person with id = ' + data.id);
+                }).fail(function (data) {
+                    abp.notify.error('Something is wrong!');
+                    //abp.notify.error(data.message);
+                });
+            });
+        });
+    })();
+</script>
+

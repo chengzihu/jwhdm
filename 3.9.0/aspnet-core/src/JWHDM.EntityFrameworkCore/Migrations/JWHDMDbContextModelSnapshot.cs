@@ -982,6 +982,74 @@ namespace JWHDM.Migrations
                     b.ToTable("AbpUsers");
                 });
 
+            modelBuilder.Entity("JWHDM.Challenges.Challenge", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ChallengeDeclaration");
+
+                    b.Property<DateTime?>("ChallengeTime");
+
+                    b.Property<long>("ChallengerId");
+
+                    b.Property<long>("ConfirmUserId");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<string>("Description");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<bool>("IsPublic");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<int?>("TenantId");
+
+                    b.Property<string>("ToChallengeDeclaration");
+
+                    b.Property<long>("ToChallengerId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChallengerId");
+
+                    b.HasIndex("ConfirmUserId");
+
+                    b.HasIndex("ToChallengerId");
+
+                    b.ToTable("Challenges");
+                });
+
+            modelBuilder.Entity("JWHDM.LessonMinds.LessonMind", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<string>("MindName");
+
+                    b.Property<int?>("TenantId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LessonMinds");
+                });
+
             modelBuilder.Entity("JWHDM.MultiTenancy.Tenant", b =>
                 {
                     b.Property<int>("Id")
@@ -1029,6 +1097,216 @@ namespace JWHDM.Migrations
                     b.HasIndex("TenancyName");
 
                     b.ToTable("AbpTenants");
+                });
+
+            modelBuilder.Entity("JWHDM.TenantAgencys.TenantAgency", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Address");
+
+                    b.Property<string>("BusinessLicence");
+
+                    b.Property<string>("CallNumber");
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("CoverImage");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<bool>("IsPublic");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<string>("Logo");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<DateTime>("ServiceBegin");
+
+                    b.Property<DateTime?>("ServiceEnd");
+
+                    b.Property<int?>("TenantId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TenantAgencys");
+                });
+
+            modelBuilder.Entity("JWHDM.UserEmployees.UserEmployee", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Abstract");
+
+                    b.Property<string>("Address");
+
+                    b.Property<double>("Armspan");
+
+                    b.Property<DateTime?>("Birthdate");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<string>("Description");
+
+                    b.Property<bool>("Gender");
+
+                    b.Property<double>("Height");
+
+                    b.Property<string>("IDCard");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<string>("JoinAddress");
+
+                    b.Property<DateTime?>("JoinExpiry");
+
+                    b.Property<DateTime>("JoinTime");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<int?>("MaritalStatus");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasMaxLength(20);
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<string>("Photo");
+
+                    b.Property<long?>("RelationUserId");
+
+                    b.Property<int?>("TenantId");
+
+                    b.Property<int?>("Type");
+
+                    b.Property<double>("Weight");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RelationUserId");
+
+                    b.ToTable("UserEmployees");
+                });
+
+            modelBuilder.Entity("JWHDM.UserMemberLessonMinds.UserMemberLessonMind", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<int>("LessonMindId");
+
+                    b.Property<int?>("TenantId");
+
+                    b.Property<long>("UserMemberId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LessonMindId");
+
+                    b.HasIndex("UserMemberId");
+
+                    b.ToTable("UserMemberLessonMinds");
+                });
+
+            modelBuilder.Entity("JWHDM.UserMembers.UserMember", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Abstract")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("Address")
+                        .HasMaxLength(200);
+
+                    b.Property<double>("Armspan");
+
+                    b.Property<string>("AttendanceAddress")
+                        .HasMaxLength(200);
+
+                    b.Property<double>("AttendanceLesson");
+
+                    b.Property<DateTime?>("Birthdate");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId")
+                        .IsRequired();
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(200);
+
+                    b.Property<double>("Fee");
+
+                    b.Property<bool>("Gender");
+
+                    b.Property<double>("Height");
+
+                    b.Property<string>("IDCard")
+                        .HasMaxLength(20);
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<string>("JoinAddress");
+
+                    b.Property<DateTime?>("JoinExpiry");
+
+                    b.Property<DateTime>("JoinTime");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<int?>("MaritalStatus");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasMaxLength(20);
+
+                    b.Property<string>("PhoneNumber")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("Photo")
+                        .HasMaxLength(200);
+
+                    b.Property<int?>("TenantId");
+
+                    b.Property<double>("TotalLesson");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(50);
+
+                    b.Property<double>("Weight");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserMembers");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -1182,6 +1460,24 @@ namespace JWHDM.Migrations
                         .HasForeignKey("LastModifierUserId");
                 });
 
+            modelBuilder.Entity("JWHDM.Challenges.Challenge", b =>
+                {
+                    b.HasOne("JWHDM.Authorization.Users.User", "Challenger")
+                        .WithMany()
+                        .HasForeignKey("ChallengerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("JWHDM.Authorization.Users.User", "ConfirmUser")
+                        .WithMany()
+                        .HasForeignKey("ConfirmUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("JWHDM.Authorization.Users.User", "ToChallenger")
+                        .WithMany()
+                        .HasForeignKey("ToChallengerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("JWHDM.MultiTenancy.Tenant", b =>
                 {
                     b.HasOne("JWHDM.Authorization.Users.User", "CreatorUser")
@@ -1199,6 +1495,26 @@ namespace JWHDM.Migrations
                     b.HasOne("JWHDM.Authorization.Users.User", "LastModifierUser")
                         .WithMany()
                         .HasForeignKey("LastModifierUserId");
+                });
+
+            modelBuilder.Entity("JWHDM.UserEmployees.UserEmployee", b =>
+                {
+                    b.HasOne("JWHDM.Authorization.Users.User", "RelationUser")
+                        .WithMany()
+                        .HasForeignKey("RelationUserId");
+                });
+
+            modelBuilder.Entity("JWHDM.UserMemberLessonMinds.UserMemberLessonMind", b =>
+                {
+                    b.HasOne("JWHDM.LessonMinds.LessonMind", "LessonMind")
+                        .WithMany("UserMemberLessonMinds")
+                        .HasForeignKey("LessonMindId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("JWHDM.UserMembers.UserMember", "UserMember")
+                        .WithMany("UserMemberLessonMinds")
+                        .HasForeignKey("UserMemberId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
