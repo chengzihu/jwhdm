@@ -17,7 +17,7 @@ namespace JWHDM.RTHistorys
     {
         private readonly RTContext _context = new RTContext();
         //[AbpAuthorize(PermissionNames.Pages_RTHistorys_Query)]
-        public string GetHistoryDatas(QueryRTHistoryDto dto)// (string tenantid, string pointid, long beginTimestamp, long endTimestamp)
+        public List<BsonDocument> GetHistoryDatas(QueryRTHistoryDto dto)// (string tenantid, string pointid, long beginTimestamp, long endTimestamp)
         {
             //创建约束生成器
             FilterDefinitionBuilder<BsonDocument> builderFilter = Builders<BsonDocument>.Filter;
@@ -30,10 +30,10 @@ namespace JWHDM.RTHistorys
                 filter &= builderFilter.Lte("timestampclient", dto.endTimestamp);
             //获取数据
             var tenantResult = _context.HistoryPointDatasBson($"{dto.tenantid}.datas").Find<BsonDocument>(filter).Sort(Builders<BsonDocument>.Sort.Ascending("timestampclient")).Skip(0).Limit(2000);
-            return tenantResult.ToList().ToJson();
+            return tenantResult.ToList();
         }
 
-        public string GetHTDatas(QueryRTHistoryDto dto)// (string tenantid, string pointid, long beginTimestamp, long endTimestamp)
+        public List<BsonDocument> GetHTDatas(QueryRTHistoryDto dto)// (string tenantid, string pointid, long beginTimestamp, long endTimestamp)
         {
             //创建约束生成器
             FilterDefinitionBuilder<BsonDocument> builderFilter = Builders<BsonDocument>.Filter;
@@ -46,7 +46,7 @@ namespace JWHDM.RTHistorys
                 filter &= builderFilter.Lte("timestampclient", dto.endTimestamp);
             //获取数据
             var tenantResult = _context.RTPointDatasBson($"{dto.tenantid}.datas").Find<BsonDocument>(filter).Sort(Builders<BsonDocument>.Sort.Ascending("timestampclient")).Skip(0).Limit(2000);
-            return tenantResult.ToList().ToJson();
+            return tenantResult.ToList();
         }
 
         //public string GetDatasLte(QueryRTHistoryLteDto dto)
