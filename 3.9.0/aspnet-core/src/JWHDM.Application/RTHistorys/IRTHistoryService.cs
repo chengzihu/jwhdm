@@ -7,8 +7,9 @@ namespace JWHDM.RTHistorys
 {
     public interface IRTHistoryService
     {
-        string GetDatas(QueryRTHistoryDto dto);// (string tenantid, string pointid, long beginTimestamp, long endTimestamp);
+        string GetHistoryDatas(QueryRTHistoryDto dto);// (string tenantid, string pointid, long beginTimestamp, long endTimestamp);
         //string GetDatasLte(QueryRTHistoryLteDto dto);
         //string GetDatasGte(QueryRTHistoryGteDto dto);
+        string GetHTDatas(QueryRTHistoryDto dto);
     }
 }
