@@ -52,7 +52,7 @@ namespace JWHDM.Web.Mvc.Controllers
             return View(model);
         }
 
-        [AbpMvcAuthorize(PermissionNames.Pages_Pages_UserMembers_Query, PermissionNames.Pages_Pages_UserMembers_Create)]
+        [AbpMvcAuthorize(PermissionNames.Pages_UserMembers_Query, PermissionNames.Pages_UserMembers_Create)]
         /// <summary>
         ///  获取GET参数 Request.Query["Key"] 获取POST参数 Request.Form["Key"]
         /// </summary>

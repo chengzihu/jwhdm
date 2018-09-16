@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using Abp.Authorization;
 using Abp.AutoMapper;
 using Abp.Dependency;
 using Abp.Domain.Repositories;
@@ -7,6 +8,7 @@ using Abp.Domain.Uow;
 using Abp.Linq.Extensions;
 using Abp.Runtime.Session;
 using Abp.UI;
+using JWHDM.Authorization;
 using JWHDM.LessonMinds;
 using JWHDM.LessonMinds.Dto;
 using JWHDM.UserMemberLessonMinds;
@@ -22,6 +24,7 @@ using System.Threading.Tasks;
 
 namespace JWHDM.UserMembers
 {
+    [AbpAuthorize(PermissionNames.Pages_UserMembers)]
     public class UserMemberAppService : AsyncCrudAppService<UserMember, UserMemberDto,long, GetUserMembersPagedResultRequestDto, CreateUserMemberDto, UpdateUserMemberDto>,IUserMemberAppService
     {
         private readonly UserMemberManager _userMemberManager;
@@ -93,6 +96,7 @@ namespace JWHDM.UserMembers
             return resultDto;
         }
 
+        //[AbpAuthorize(PermissionNames.Pages_UserMembers_Create)]
         public override async Task<UserMemberDto> Create(CreateUserMemberDto input)
         {
             int? currentTenantId = null;

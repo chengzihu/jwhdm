@@ -19,7 +19,7 @@ using JWHDM.Users.Dto;
 
 namespace JWHDM.Users
 {
-    [AbpAuthorize(PermissionNames.Pages_Users,PermissionNames.Pages_UserMembers)]
+    [AbpAuthorize(PermissionNames.Pages_Users)]
     public class UserAppService : AsyncCrudAppService<User, UserDto, long, PagedResultRequestDto, CreateUserDto, UserDto>, IUserAppService
     {
         private readonly UserManager _userManager;
